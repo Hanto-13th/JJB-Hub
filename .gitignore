@@ -1,0 +1,29 @@
+#files and folders to ignore for Git
+#do NOT commit secrets, temporary files, or local environments
+
+#Django
+*.log
+*.pot
+db.sqlite3
+media/
+staticfiles/
+
+#python-generated files
+__pycache__/
+.idea/
+
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.log
+*.tmp
+
+#step by step file
+step.txt
+
+#virtual env and env variables
+venv/
+.env
+
+
