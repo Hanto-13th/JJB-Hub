@@ -1,0 +1,73 @@
+<!--Create a user form:
+-username + password
+- firstname
+- lastname
+- club key
+- belt
+- fav submisison
+- fav guard passage 
+- fav guard
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Création de compte</title>
+</head>
+<body>
+<h1>Créez ton compte</h1>
+<form action="{% url 'create_an_user' %}" method="post">
+    {% csrf_token %}
+    <ul>
+        <li>
+            <label for="username">Nom d'utilisateur&nbsp;</label>
+            <input type="text" id="username" name="username" required/>
+        </li>
+        <li>
+            <label for="password">Mot de Passe&nbsp;</label>
+            <input type="password" id="password" name="password" required/>
+        </li>
+        <li>
+            <label for="firstname">Prénom&nbsp;</label>
+            <input type="text" id="firstname" name="firstname" required/>
+        </li>
+        <li>
+            <label for="lastname">Nom&nbsp;</label>
+            <input type="text" id="lastname" name="lastname" required/>
+        </li>
+        <li>
+            <label for="club_secret_key">Clé du club&nbsp;</label>
+            <input type="text" id="club_secret_key" name="club_secret_key" required/>
+        </li>
+        <li>
+            <label for="belt">Couleur de ceinture&nbsp;</label>
+            <select id="belt" name="belt">
+                <option>Blanche</option>
+                <option>Bleue</option>
+                <option>Violette</option>
+                <option>Marron</option>
+                <option>Noire</option>
+            </select>
+        </li>
+        <li>
+            <label for="fav_submission">Ta soumission préférée&nbsp;</label>
+            <input type="text" id="fav_submission" name="fav_submission" required/>
+        </li>
+        <li>
+            <label for="fav_passage">Ton passage de garde préféré&nbsp;</label>
+            <input type="text" id="fav_passage" name="fav_passage" required/>
+        </li>
+        <li>
+            <label for="fav_guard">Ta garde préférée&nbsp;</label>
+            <input type="text" id="fav_guard" name="fav_guard" required/>
+        </li>
+        <div class="button">
+        <button type="submit">Créer un compte</button>
+        </div>
+    </ul>
+</form>
+</body>
+</html>
+

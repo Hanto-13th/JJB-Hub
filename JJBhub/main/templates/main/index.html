@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil</title>
+</head>
+<body>
+    <h1>Bienvenue sur "Mon Tatami"</h1>
+        <a href="{% url 'login_page' %}">Se connecter <br /></a>
+        <a href="{% url 'create_account_page' %}">Créer un compte <br /></a>
+        <a href="{% url 'create_club_page' %}">Créer son club <br /></a>
+    {% if messages %}
+  <ul>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+    {% endif %}
+</body>
+</html>

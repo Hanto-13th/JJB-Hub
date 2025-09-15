@@ -1,0 +1,34 @@
+<!--Create a club form:
+-club name
+-secret key (six randomized char generated) >>> used by users for the inscription
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Création de club</title>
+</head>
+<body>
+<h1>Créez un Club</h1>
+<form action="{% url 'create_a_club' %}" method="post">
+    {% csrf_token %}
+    <ul>
+        <li>
+            <label for="club_name">Nom du Club&nbsp;</label>
+            <input type="text" id="club_name" name="club_name" required/>
+        </li>
+        <li>
+            <label for="secret_key">Clé Secrète:&nbsp;</label>
+            <input type="text" id="secret_key" name="secret_key" value="{{ secret_key }}" required/>
+            <label for="secret_key">(à conserver précieusement pour l'inscription des adhérents)&nbsp;</label>
+        </li>
+        <div class="button">
+        <button type="submit">Créer un club</button>
+        </div>
+    </ul>
+</form>
+</body>
+</html>
+
