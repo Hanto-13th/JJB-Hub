@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage</title>
+</head>
+<body>
+<h1>Bienvenue, {{ firstname }}</h1>
+    <ul>
+        <li>
+            <p>Ton club: {{ club }}</p>
+            <p>Ta ceinture: {{ belt }}</p>
+        </li>
+        <li>
+            <p>Victoires: {{ victory }}</p>
+            <p>Médaille d'or: {{ gold_medal }}</p>
+            <p>Médaille d'argent: {{ silver_medal }}</p>
+            <p>Médaille de bronze: {{ bronze_medal }}</p>
+        </li>
+        <li>
+            <p>Points: {{ points }}</p>
+            <p>Soumission Préférée: {{ fav_submission }}</p>
+            <p>Passage Préféré: {{ fav_passage }}</p>
+            <p>Garde Préférée: {{ fav_guard }}</p>
+        </li>
+        <form action="{% url 'drills_log' %}" method="get">
+        <button type="submit">Journal de Drill</button>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal de Drill</title>
+</head>
+<body>
+<h1>Journal de Drill</h1>
+    <!--display all the drill using format (name : description)-->
+    <ul>
+        {% for drill in all_user_drill %}
+            <li>{{ drill.name }}: {{ drill.description }}</li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'add_drill' %}" method="get">
+    <div class="button">
+    <button type="submit">Créer un drill</button>
+    </div>
+</body>
+</html>
