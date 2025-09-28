@@ -26,6 +26,11 @@
         </li>
         <form action="{% url 'drills_log' %}" method="get">
         <button type="submit">Journal de Drill</button>
+        </form>
+        <form action="{% url 'account_logout' %}" method="post">
+            {% csrf_token %}
+        <button type="submit">Se déconnecter</button>
+        </form>
     </ul>
 </body>
 </html>

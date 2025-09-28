@@ -16,11 +16,11 @@ def go_to_create_account_page(request):
 def go_to_login_page(request):
     return redirect("login_page")
 
-########################
+##############################
 #
-# ONLY IF A USER IS LOG
+# ONLY IF A USER IS LOGGED IN
 #
-########################
+##############################
 
 #after login display the user homepage
 @login_required(login_url="login/")

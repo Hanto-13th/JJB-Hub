@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 import secrets
 from .models import Club,CustomUser
@@ -88,6 +89,11 @@ def account_login(request):
         return redirect("home")
 
     return HttpResponse("Méthode non autorisée", status=405)
+
+@login_required(login_url="login/")
+def account_logout(request):
+    logout(request)
+    return redirect("login_page")
 
 
 
