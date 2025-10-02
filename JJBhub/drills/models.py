@@ -6,7 +6,8 @@ class Drill(models.Model):
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=300)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    accomplish = models.BooleanField()
+    keyword = models.CharField(max_length=600)
+    accomplish = models.BooleanField(default=False)
     creation_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

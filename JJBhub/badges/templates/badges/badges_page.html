@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mes badges</title>
+{% load static %}
+</head>
+<body>
+<h1>Mes badges</h1>
+    <!--display all the drill using format (name : description)-->
+        <ul>
+            <!--check all badges with user badges-->
+            {% for badges in all_badges %}
+                {% if badges.name in user_badge_names %}
+                    <!--if user has the badge display his icon-->
+                    <li>
+                        <img src="{% static badges.image_path %}" alt="{{ badges.name }}" width="40" height="40"><br>
+                        <label for="badge_{{ badges.id }}">{{ badges.name }}: {{ badges.description }}<br>{{ badges.point }} points<br>Débloqué</label>
+                    </li>
+                {% else %}
+                    <!--else the badge icon is hidden-->
+                    <li>
+                        <img src="{% static 'badges\images\not_badge_test.png' %}" alt="{{ badges.name }}" width="40" height="40"><br>
+                        <label for="badge_{{ badges.id }}">{{ badges.name }}: {{ badges.description }}<br>{{ badges.point }} points<br>Bloqué</label>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <!--form for url rollback-->
+        <form action="{% url 'home' %}" method="get">
+            <button type="submit">Retour</button>
+        </form>
+</body>
+</html>

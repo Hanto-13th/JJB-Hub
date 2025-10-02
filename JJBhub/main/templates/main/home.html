@@ -25,7 +25,10 @@
             <p>Garde Préférée: {{ fav_guard }}</p>
         </li>
         <form action="{% url 'drills_log' %}" method="get">
-        <button type="submit">Journal de Drill</button>
+        <button type="submit">Journal de drill</button>
+        </form>
+        <form action="{% url 'badges_page' %}" method="get">
+        <button type="submit">Mes badges</button>
         </form>
         <form action="{% url 'account_logout' %}" method="post">
             {% csrf_token %}

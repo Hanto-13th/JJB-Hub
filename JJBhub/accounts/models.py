@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from badges.models import Badge
-
+    
 #the Clubs has a access by secret key (Generated 6 random character)
 class Club(models.Model):
     club_name = models.CharField(max_length=200)
@@ -21,7 +20,7 @@ class CustomUser(AbstractUser):
     ("Black", "Black")]
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
     belt = models.CharField(max_length=10,choices=BELT_CHOICES,default="White")
-    badges = models.ManyToManyField(Badge,blank=True)
+    badges = models.ManyToManyField("badges.Badge",through="badges.UserBadge",blank=True)
     points = models.IntegerField(default=0)
     victory = models.IntegerField(default=0)
     gold_medal = models.IntegerField(default=0)

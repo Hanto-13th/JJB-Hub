@@ -15,7 +15,7 @@
         <ul>
             {% for drill in all_user_drill %}
                 <li>
-                    <label for="drill_{{ drill.id }}">{{ drill.name }}: {{ drill.description }}</label>
+                    <label for="drill_{{ drill.id }}">{{ drill.name }}: {{ drill.description }}<br>Mots clés associés: {{ drill.keyword }}</label>
                     <input type="checkbox" id="drill_{{ drill.id }}" name="drill_check" value="{{ drill.id }}">
                 </li>
             {% endfor %}
