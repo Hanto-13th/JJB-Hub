@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Drill
 from badges.models import Badge, UserBadge
+from accounts.models import CustomUser
 import copy
 
 ##############################
@@ -76,10 +77,16 @@ def checkbox_drill(request):
                             user_badge = UserBadge.objects.get(user=request.user, badge=badge,is_completed=False)
                             progress = copy.deepcopy(user_badge.progress)
                             progress[drill.keyword] -= 1
+                            #check if all the count values in the progress dict are 0 >>> the badge is completed by user and add badge points at the user points
+                            if all(progress.values()) == 0:
+                                user = request.user
+                                user.points += badge.point
+                                user_badge.is_completed = True
+                                user.save()
+                            print(progress)
                             #after modification, update the badge progress and save him
                             user_badge.progress = progress
                             user_badge.save()
-                            #print("loop over the badge")
 
                         #if it's the first time, user in progress for this badge
                         except UserBadge.DoesNotExist:
@@ -89,17 +96,19 @@ def checkbox_drill(request):
                             #copy and update the badge condition (count value - 1) using keyword
                             badge_condition = copy.deepcopy(badge.condition)
                             badge_condition[drill.keyword] -= 1
-                            #save the new condition progress for this new badge
+                            #update the condition progress for this new badge
                             new_badge.progress = badge_condition
+                            #check if all the count values in the progress dict are 0 >>> the badge is completed by user and add badge points at the user points
+                            progress = copy.deepcopy(new_badge.progress)
+                            if all(progress.values()) == 0:
+                                user = request.user
+                                user.points += badge.point
+                                new_badge.is_completed = True
+                                user.save()
                             new_badge.save()
-                            #print("badge created")
 
-            #on va checker pour les badges si tout leurs count values atteignent pas 0 
-            #si c est le cas alors userbadge.is_completed = true et le user reçoit ses points >>> user=request.user >>> user.points += badge.points >>> user.save()
-            #quoi qu il arrive on delete les drills checked
-
-
-            #Drill.objects.filter(id__in=drills_checked,user=request.user).delete()
+            #whatever the results, delete all drills checked
+            Drill.objects.filter(id__in=drills_checked,user=request.user).delete()
           
         return redirect("drills_log")
 
