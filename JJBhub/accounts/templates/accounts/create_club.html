@@ -9,26 +9,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Création de club</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
 <body>
 <h1>Créez un Club</h1>
-<form action="{% url 'create_a_club' %}" method="post">
-    {% csrf_token %}
-    <ul>
-        <li>
-            <label for="club_name">Nom du Club&nbsp;</label>
-            <input type="text" id="club_name" name="club_name" required/>
-        </li>
-        <li>
-            <label for="secret_key">Clé Secrète:&nbsp;</label>
-            <input type="text" id="secret_key" name="secret_key" value="{{ secret_key }}" required/>
-            <label for="secret_key">(à conserver précieusement pour l'inscription des adhérents)&nbsp;</label>
-        </li>
-        <div class="button">
-        <button type="submit">Créer un club</button>
-        </div>
-    </ul>
-</form>
+    <form action="{% url 'create_a_club' %}" method="post">
+        {% csrf_token %}
+        <ul>
+            <li>
+                <label for="club_name">Nom du Club&nbsp;</label>
+                <input type="text" id="club_name" name="club_name" required/>
+            </li>
+            <li>
+                <label for="secret_key">Clé Secrète:&nbsp;</label>
+                <input type="text" id="secret_key" name="secret_key" value="{{ secret_key }}" required readonly/>
+                <label for="secret_key">(à conserver précieusement pour l'inscription des adhérents)&nbsp;</label>
+            </li>
+            <button type="submit">Créer un club</button>
+        </ul>
+    </form>
+    <!--form for url rollback-->
+    <form action="{% url 'index' %}" method="get">
+        <button type="submit">Retour</button>
+    </form>
 </body>
 </html>
 

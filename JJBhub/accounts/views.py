@@ -2,9 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
+from django.db import transaction
 import secrets
 from .models import Club,CustomUser
 
@@ -20,6 +19,7 @@ def login_page(request):
     return render(request,"accounts/login.html")
 
 #get alls infos from the label to create the club (only the club name, the key is automatically generated)
+@transaction.atomic
 def create_a_club(request):
     if request.method == 'POST':
         name = request.POST.get("club_name")
@@ -27,6 +27,9 @@ def create_a_club(request):
         #check the infos required
         if not name or not key:
             return HttpResponse("Paramètres manquants", status=400)
+        #check if a club with same key exists (cannot coexisting)
+        if Club.objects.filter(club_name=name,secret_key=key).exists():
+            return HttpResponse("Le club associé à cette clé existe déjà", status=404)
         #create the club object and save him
         club = Club(club_name=name,secret_key=key)
         club.save()
@@ -35,6 +38,7 @@ def create_a_club(request):
     return HttpResponse("Méthode non autorisée", status=405)
 
 #get alls infos from the label to create an user, hash the password to allows the creation
+@transaction.atomic
 def create_an_user(request):
     if request.method == 'POST':
         username = request.POST.get("username")
@@ -47,16 +51,19 @@ def create_an_user(request):
         fav_passage = request.POST.get("fav_passage")
         fav_guard = request.POST.get("fav_guard")
 
-        if not username or not password or not club_key:
+        if not username or not password or not club_key or not firstname or not lastname:
             return HttpResponse("Paramètres manquants", status=400)
         #check if they are a club matching with the secret key to allow the user connect with this club
         try:
             club = Club.objects.get(secret_key=club_key)
         except Club.DoesNotExist:
             return HttpResponse("Club introuvable", status=404)
+        #check if the "user favorites" has the good lenght
+        if len(fav_submission) > 20 or len(fav_passage) > 20 or len(fav_guard) > 20:
+            return HttpResponse("soumission favorite/passage favori/garde favorite ne doivent pas dépasser 20 caractères chacun", status=404)
         #if all good, create user and save him
-        user = CustomUser(username=username,
-                        password=make_password(password),
+        user = CustomUser.objects.create_user(username=username,
+                        password=password,
                         first_name=firstname,
                         last_name=lastname,
                         club=club,
@@ -90,10 +97,16 @@ def account_login(request):
 
     return HttpResponse("Méthode non autorisée", status=405)
 
+##############################
+#
+# ONLY IF A USER IS LOGGED IN
+#
+##############################
+
 @login_required(login_url="login/")
 def account_logout(request):
     logout(request)
-    return redirect("login_page")
+    return redirect("index")
 
 
 

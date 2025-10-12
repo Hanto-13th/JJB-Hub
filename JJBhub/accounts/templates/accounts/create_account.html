@@ -15,6 +15,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Création de compte</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
 <body>
 <h1>Créez ton compte</h1>
@@ -44,11 +46,11 @@
         <li>
             <label for="belt">Couleur de ceinture&nbsp;</label>
             <select id="belt" name="belt">
-                <option>Blanche</option>
-                <option>Bleue</option>
-                <option>Violette</option>
-                <option>Marron</option>
-                <option>Noire</option>
+                <option>White</option>
+                <option>Blue</option>
+                <option>Purple</option>
+                <option>Brown</option>
+                <option>Black</option>
             </select>
         </li>
         <li>
@@ -63,11 +65,13 @@
             <label for="fav_guard">Ta garde préférée&nbsp;</label>
             <input type="text" id="fav_guard" name="fav_guard" required/>
         </li>
-        <div class="button">
         <button type="submit">Créer un compte</button>
-        </div>
     </ul>
 </form>
+    <!--form for url rollback-->
+    <form action="{% url 'index' %}" method="get">
+        <button type="submit">Retour</button>
+    </form>
 </body>
 </html>
 

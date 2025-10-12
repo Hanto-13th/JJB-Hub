@@ -7,6 +7,7 @@ function updateButtons() {
     const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
     deleteBtn.disabled = !anyChecked;
     accomplishBtn.disabled = !anyChecked;
+    //if one is checked at least the button is enabled to active
 }
 
 //listen all updates

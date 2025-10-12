@@ -3,37 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Homepage</title>
+<title>MonTatami/Homepage</title>
 </head>
+<!--load the static for the css stylesheet and link -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/homepage.css' %}">
 <body>
-<h1>Bienvenue, {{ firstname }}</h1>
-    <ul>
-        <li>
-            <p>Ton club: {{ club }}</p>
-            <p>Ta ceinture: {{ belt }}</p>
-        </li>
-        <li>
-            <p>Victoires: {{ victory }}</p>
-            <p>Médaille d'or: {{ gold_medal }}</p>
-            <p>Médaille d'argent: {{ silver_medal }}</p>
-            <p>Médaille de bronze: {{ bronze_medal }}</p>
-        </li>
-        <li>
-            <p>Points: {{ points }}</p>
-            <p>Soumission Préférée: {{ fav_submission }}</p>
-            <p>Passage Préféré: {{ fav_passage }}</p>
-            <p>Garde Préférée: {{ fav_guard }}</p>
-        </li>
-        <form action="{% url 'drills_log' %}" method="get">
-        <button type="submit">Journal de drill</button>
-        </form>
-        <form action="{% url 'badges_page' %}" method="get">
-        <button type="submit">Mes badges</button>
-        </form>
-        <form action="{% url 'account_logout' %}" method="post">
-            {% csrf_token %}
-        <button type="submit">Se déconnecter</button>
-        </form>
-    </ul>
+    <!--create a grid container to manipulate all items-->
+    <div class="grid-container_homepage">
+        <!-- the container for the title -->
+        <div class="title_homepage">
+        <header><h1>Bienvenue, {{ firstname }}</h1></header>
+        </div>
+            <!--each item has a container to manipulate in the grid-->
+                <div class="item-club">
+                    <section> <p>Ton club: {{ club }}</p> </section>
+                </div>
+                <div class="item-belt">
+                        <section>
+                        <p>Ta ceinture: {{ belt }}</p>
+                        <!--form to permit user change his belt (+100 points)-->
+                            <form action="new_belt" method="post">
+                                {% csrf_token %}
+                            <button type="submit" onclick="return confirm('Passez vous à la ceinture supérieure ?');">Passage de ceinture</button>
+                            </form>
+                        </section>
+                </div>
+                <div class="item-victory">
+                    <section>
+                    <p>Victoires: {{ victory }}</p>
+                    </section>
+                </div>
+                <div class="item-victory_button">
+                    <section>
+                        <!--form to permit user count his competition victory (+4 points/victory)-->
+                        <form action="new_victory" method="post">
+                            {% csrf_token %}
+                        <button type="submit" onclick="return confirm('Avez vous remporté une victoire en compétition ?');">+1 victoire en compétition</button>
+                        </form>
+                    </section>
+                </div>
+                    <div class="item-gold_medal">
+                            <section>
+                            <p>Médaille d'or: {{ gold_medal }}</p>
+                            <!--form to permit user count his competition medal (+30 points/gold, +20 points/silver, +10 points/bronze)-->
+                            <form action="new_medal" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="medal" value="gold" onclick="return confirm('Avez vous remporté une nouvelle médaille (or) ?');">+1 médaille d'or</button>
+                            </form>
+                            </section>
+                    </div>
+                    <div class="item-silver_medal">
+                            <section>
+                            <p>Médaille d'argent: {{ silver_medal }}</p>
+                            <form action="new_medal" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="medal" value="silver" onclick="return confirm('Avez vous remporté une nouvelle médaille (argent) ?');">+1 médaille d'argent</button>
+                            </form>
+                            </section>
+                    </div>
+                    <div class="item-bronze_medal">
+                            <section>
+                            <p>Médaille de bronze: {{ bronze_medal }}</p>
+                            <form action="new_medal" method="post">
+                                {% csrf_token %}
+                                <button type="submit" name="medal" value="bronze" onclick="return confirm('Avez vous remporté une nouvelle médaille (bronze) ?');">+1 médaille de bronze</button>
+                            </form>
+                            </section>
+                    </div>
+                <div class="item-points">
+                    <section> <p>Points: {{ points }}</p> </section>
+                </div>
+                <div class="item-fav_submission">
+                    <section> <p>Soumission Préférée: {{ fav_submission }}</p> </section>
+                </div>
+                <div class="item-fav_passage">
+                    <section> <p>Passage Préféré: {{ fav_passage }}</p> </section>
+                </div>
+                <div class="item-fav_guard">
+                    <section> <p>Garde Préférée: {{ fav_guard }}</p> </section>
+                </div>
+                <!-- differents buttons to redirect user to other pages (drills,badges...) and logout-->
+                <div class="item-drills_log">
+                    <form action="{% url 'drills_log' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Journal de drill</button>
+                    </form>
+                </div>
+                <div class="item-badges_page">
+                    <form action="{% url 'badges_page' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Mes Badges</button>
+                        
+                    </form>
+                </div>
+                <div class="item-user_settings">
+                    <form action="{% url 'user_settings' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Paramètres</button>
+                    </form>
+                </div>
+                <div class="item-logout">
+                    <form action="{% url 'account_logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Se déconnecter</button>
+                    </form>
+                </div>
+
+    </div>
 </body>
 </html>

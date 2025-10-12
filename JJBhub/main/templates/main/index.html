@@ -3,13 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accueil</title>
+<title>MonTatami/Accueil</title>
+<!--load the static file for the css stylesheet and link-->
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}">
 </head>
 <body>
-    <h1>Bienvenue sur "Mon Tatami"</h1>
-        <a href="{% url 'login_page' %}">Se connecter <br /></a>
-        <a href="{% url 'create_account_page' %}">Créer un compte <br /></a>
-        <a href="{% url 'create_club_page' %}">Créer son club <br /></a>
+  <!--set the grid container to manipulate items-->
+  <div class="grid-container_index">
+    <!--set the container for the title-->
+    <div class="title_index">
+    <header><h1>Bienvenue sur "Mon Tatami"</h1></header>
+    </div>
+      <main>
+      <!--all the containers for manipulate items in grid-->
+      <div class="item-connect">
+        <section> <a href="{% url 'login_page' %}">Se connecter <br> </a> </section>
+      </div>
+      <div class="item-create_account">
+        <section> <a href="{% url 'create_account_page' %}">Créer un compte <br> </a> </section> 
+      </div>
+      <div class="item-create_club">
+        <section> <a href="{% url 'create_club_page' %}">Créer son club <br> </a> </section>
+      </div>
+      </main>
+    </div>
+  </div>
+  <!--Update the messages in progress-->
     {% if messages %}
   <ul>
     {% for message in messages %}

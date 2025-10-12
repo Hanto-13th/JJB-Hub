@@ -26,9 +26,9 @@ class CustomUser(AbstractUser):
     gold_medal = models.IntegerField(default=0)
     silver_medal = models.IntegerField(default=0)
     bronze_medal = models.IntegerField(default=0)
-    fav_submission = models.CharField(max_length=250,default="")
-    fav_passage = models.CharField(max_length=250,default="")
-    fav_guard = models.CharField(max_length=250,default="")
+    fav_submission = models.CharField(max_length=20,default="")
+    fav_passage = models.CharField(max_length=20,default="")
+    fav_guard = models.CharField(max_length=20,default="")
     creation_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
 <body>
 <h1>Connexion au compte</h1>
@@ -18,9 +20,7 @@
                 <label for="password">Mot de Passe&nbsp;</label>
                 <input type="password" id="password" name="password" required/>
             </li>
-            <div class="button">
             <button type="submit">Se connecter</button>
-            </div>
             {% if messages %}
         <ul>
             {% for message in messages %}
@@ -29,6 +29,10 @@
         </ul>
             {% endif %}
         </ul>
+    </form>
+    <!--form for url rollback-->
+    <form action="{% url 'index' %}" method="get">
+        <button type="submit">Retour</button>
     </form>
 </body>
 </html>

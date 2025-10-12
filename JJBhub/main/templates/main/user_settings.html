@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MonTatami/Settings</title>
+<!-- load the static files with css and link him-->
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/user_settings.css' %}">
+</head>
+<body>
+    <!-- set the grid container to manipulate the items-->
+    <div class="grid-container_settings">
+        <!-- the container for the title -->
+        <div class="title_settings">
+        <header> <h1>Paramètres</h1> </header>
+        </div>
+            <!-- the container for all settings items (all condensed in a list) -->
+            <div class="item-all_settings">
+                <section>
+                    <!--the form to permit user changes his password-->
+                    <form action="{% url 'change_password' %}" method="post">
+                        {% csrf_token %}
+                        <label for="password">Nouveau mot de passe:&nbsp;</label>
+                        <input type="password" id="password" name="password" required/>
+                        <button type="submit">Modifier le mot de passe</button>
+                    </form>
+                    <br>
+                </section>
+                <section>
+                    <!--the form to permit user changes club (remplacing the actual secret key by the secret key of the new club)-->
+                    <form action="{% url 'change_club' %}" method="post">
+                        {% csrf_token %}
+                        <label for="secret_key">Clé du club actuel:&nbsp;</label>
+                        <input type="text" id="secret_key" name="secret_key" value="{{ club }}" required/>
+                        <button type="submit">Changer de club</button> 
+                    </form>
+                    <br>
+                </section>
+                <section>
+                    <!--the form to permit user his favorites-->
+                    <form action="{% url 'change_favorite' %}" method="post">
+                        {% csrf_token %}
+                        <li>
+                            <label for="fav_submission">Soumission favorite actuelle:&nbsp;</label>
+                            <input type="text" id="fav_submission" name="fav_submission" value="{{ fav_submission }}" required/> 
+                        </li>
+                        <br>
+                        <li>
+                            <label for="fav_passage">Passage favori actuel:&nbsp;</label>
+                            <input type="text" id="fav_passage" name="fav_passage" value="{{ fav_passage }}" required/> 
+                        </li>
+                        <br>
+                        <li>
+                            <label for="fav_guard">Garde favorite actuelle:&nbsp;</label>
+                            <input type="text" id="fav_guard" name="fav_guard" value="{{ fav_guard }}" required/>
+                            <button type="submit">Changer ses favoris</button>
+                        </li>
+                    </form>
+                </section>
+            </div>
+            <div class="item-rollback_button">
+                <section>
+                    <!--form for url rollback-->
+                    <form action="{% url 'home' %}" method="get">
+                        <button type="submit">Retour</button>
+                    </form>
+                </section>
+            </div>
+    </div>
+</body>
+</html>

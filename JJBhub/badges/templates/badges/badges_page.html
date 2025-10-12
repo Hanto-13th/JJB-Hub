@@ -21,7 +21,7 @@
                 {% else %}
                     <!--else the badge icon is hidden-->
                     <li>
-                        <img src="{% static 'badges\images\not_badge_test.png' %}" alt="{{ badges.name }}" width="40" height="40"><br>
+                        <img src="{% static 'badges\images\badge_locked.png' %}" alt="{{ badges.name }}" width="40" height="40"><br>
                         <label for="badge_{{ badges.id }}">{{ badges.name }}: {{ badges.description }}<br>{{ badges.point }} points<br>Bloqué</label>
                     </li>
                 {% endif %}

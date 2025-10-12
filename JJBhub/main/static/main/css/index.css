@@ -1,0 +1,50 @@
+body{ 
+    background-color: #56a0d3;
+    font-family:'Arial';
+}
+
+.grid-container_index {
+  display: grid; /* set the grid */
+  grid-template-columns: 1fr; /* One columns */
+  gap: 1rem; /* Space between grid items */
+  grid-auto-rows: minmax(6rem, auto); /* Rows with a minimum height of 6rem */
+  justify-items: center;
+  align-items: center; /* align all items */
+}
+
+/* set the items in the grid */
+.title_index {
+    grid-column: 1; 
+    grid-row: 1; 
+    font-size: 150%;
+    padding: 2rem;
+    color: #f0f8ff;
+}
+
+.item-connect, .item-create_account, .item-create_club {
+    grid-column: 2; 
+    grid-row: 4; 
+    font-size: 120%;
+    padding: 1rem;
+    text-align: center;
+   
+}
+
+
+a {
+    text-decoration: none; /* delete the underline */
+    color: aliceblue; 
+    font-weight: bold;   
+}
+/* when hover the link */
+a:hover {
+    text-decoration: underline; /* add the underline */
+    font-style: italic;
+}
+
+button {
+  background-color: #828282;
+  color: aliceblue;
+}
+
+
