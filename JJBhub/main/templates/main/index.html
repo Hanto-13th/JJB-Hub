@@ -17,7 +17,7 @@
     </div>
       <main>
       <!--all the containers for manipulate items in grid-->
-      <div class="item-connect">
+      <div class="item-login">
         <section> <a href="{% url 'login_page' %}">Se connecter <br> </a> </section>
       </div>
       <div class="item-create_account">
@@ -37,5 +37,9 @@
     {% endfor %}
   </ul>
     {% endif %}
+  <!--add the judoka sprite-->
+  <img class="judoka" src = "{% static 'main/images/judoka.png' %}" alt="judoka">
+  <!--add a footer to represent a tatami (style)-->
+  <footer class="tatami"></footer>
 </body>
 </html>

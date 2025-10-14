@@ -4,35 +4,61 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login</title>
+<!--load static files for css and link-->
 {% load static %}
-<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 </head>
 <body>
-<h1>Connexion au compte</h1>
-    <form action="{% url 'account_login' %}" method="post">
-        {% csrf_token %}
-        <ul>
-            <li>
-                <label for="username">Nom d'utilisateur&nbsp;</label>
-                <input type="text" id="username" name="username" required/>
-            </li>
-            <li>
-                <label for="password">Mot de Passe&nbsp;</label>
-                <input type="password" id="password" name="password" required/>
-            </li>
-            <button type="submit">Se connecter</button>
-            {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-            {% endif %}
-        </ul>
-    </form>
-    <!--form for url rollback-->
-    <form action="{% url 'index' %}" method="get">
-        <button type="submit">Retour</button>
-    </form>
+    <!--set a container to manipulate items-->
+    <div class="grid-container_login">
+        <div class="title-login">
+            <header><h1>Connexion au compte</h1></header>
+        </div>
+            <!--form to log an user-->
+            <form action="{% url 'account_login' %}" method="post">
+                {% csrf_token %}
+                <!--container contains all label to log an user (all required)-->
+                <div class="item-login">
+                    <li>
+                        <div class="item-username">
+                            <section>
+                            <label for="username">Nom d'utilisateur :&nbsp;</label>
+                            <input type="text" id="username" name="username" required/>
+                            </section>
+                        </div>
+                        <br>
+                    </li>
+                    <li>
+                        <div class="item-password">
+                            <section>
+                            <label for="password">Mot de Passe :&nbsp;</label>
+                            <input type="password" id="password" name="password" required/>
+                            </section>
+                        </div>
+                    </li>
+                </div>
+                <!--button to submit-->
+                <div class="item-button_login">
+                    <section>
+                        <button type="submit">Se connecter</button>
+                    </section>
+                </div>
+                        {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                        {% endif %}
+            </form>
+            <div class="item-button_rollback">
+                <!--form for url rollback-->
+                <form action="{% url 'index' %}" method="get">
+                    <section>
+                        <button type="submit">Retour</button>
+                    </section>
+                </form>
+            </div>
+    </div>
 </body>
 </html>

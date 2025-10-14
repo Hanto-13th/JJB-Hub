@@ -15,63 +15,107 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Création de compte</title>
+<!--load the static files for css and link-->
 {% load static %}
-<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'accounts/css/create_account.css' %}">
 </head>
 <body>
-<h1>Créez ton compte</h1>
-<form action="{% url 'create_an_user' %}" method="post">
-    {% csrf_token %}
-    <ul>
-        <li>
-            <label for="username">Nom d'utilisateur&nbsp;</label>
-            <input type="text" id="username" name="username" required/>
-        </li>
-        <li>
-            <label for="password">Mot de Passe&nbsp;</label>
-            <input type="password" id="password" name="password" required/>
-        </li>
-        <li>
-            <label for="firstname">Prénom&nbsp;</label>
-            <input type="text" id="firstname" name="firstname" required/>
-        </li>
-        <li>
-            <label for="lastname">Nom&nbsp;</label>
-            <input type="text" id="lastname" name="lastname" required/>
-        </li>
-        <li>
-            <label for="club_secret_key">Clé du club&nbsp;</label>
-            <input type="text" id="club_secret_key" name="club_secret_key" required/>
-        </li>
-        <li>
-            <label for="belt">Couleur de ceinture&nbsp;</label>
-            <select id="belt" name="belt">
-                <option>White</option>
-                <option>Blue</option>
-                <option>Purple</option>
-                <option>Brown</option>
-                <option>Black</option>
-            </select>
-        </li>
-        <li>
-            <label for="fav_submission">Ta soumission préférée&nbsp;</label>
-            <input type="text" id="fav_submission" name="fav_submission" required/>
-        </li>
-        <li>
-            <label for="fav_passage">Ton passage de garde préféré&nbsp;</label>
-            <input type="text" id="fav_passage" name="fav_passage" required/>
-        </li>
-        <li>
-            <label for="fav_guard">Ta garde préférée&nbsp;</label>
-            <input type="text" id="fav_guard" name="fav_guard" required/>
-        </li>
-        <button type="submit">Créer un compte</button>
-    </ul>
-</form>
-    <!--form for url rollback-->
-    <form action="{% url 'index' %}" method="get">
-        <button type="submit">Retour</button>
-    </form>
+    <!--create a grid to manipulate items-->
+    <div class="grid-container_create_account">
+        <div class="title-create_account">
+            <header> <h1>Créez ton compte</h1> </header>
+        </div>
+            <!--form to create an user-->
+            <form action="{% url 'create_an_user' %}" method="post">
+                {% csrf_token %}
+                <!--container contains all label infos to create an user (all required !)-->
+                <div class="item-form_user">
+                    <ul>
+                        <li>
+                            <section>
+                                <label for="username">Nom d'utilisateur :&nbsp;</label>
+                                <input type="text" id="username" name="username" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="password">Mot de Passe :&nbsp;</label>
+                                <input type="password" id="password" name="password" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="firstname">Prénom :&nbsp;</label>
+                                <input type="text" id="firstname" name="firstname" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="lastname">Nom :&nbsp;</label>
+                                <input type="text" id="lastname" name="lastname" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <!--it's the secret key gived when a club is created-->
+                            <section>
+                                <label for="club_secret_key">Clé du club :&nbsp;</label>
+                                <input type="text" id="club_secret_key" name="club_secret_key" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <!--default = white belt-->
+                                <label for="belt">Couleur de ceinture :&nbsp;</label>
+                                <select id="belt" name="belt">
+                                    <option>White</option>
+                                    <option>Blue</option>
+                                    <option>Purple</option>
+                                    <option>Brown</option>
+                                    <option>Black</option>
+                                </select>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="fav_submission">Ta soumission préférée :&nbsp;</label>
+                                <input type="text" id="fav_submission" name="fav_submission" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="fav_passage">Ton passage de garde préféré :&nbsp;</label>
+                                <input type="text" id="fav_passage" name="fav_passage" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="fav_guard">Ta garde préférée :&nbsp;</label>
+                                <input type="text" id="fav_guard" name="fav_guard" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <!--button to submit form-->
+                        <div class="item-button_create_user">
+                            <button type="submit">Créer un compte</button>
+                        </div>
+                    </ul>
+                </div>
+            </form>
+            <div class="item-button_rollback">
+                <!--form for url rollback-->
+                <form action="{% url 'index' %}" method="get">
+                    <button type="submit">Retour</button>
+                </form>
+            </div>
+    </div>
 </body>
 </html>
 

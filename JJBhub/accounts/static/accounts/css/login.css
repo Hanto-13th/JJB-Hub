@@ -1,0 +1,31 @@
+body{ 
+    background-color: #56a0d3;
+    font-family:'Arial';
+    color: aliceblue;
+}
+
+button {
+  background-color: #828282;
+  color: aliceblue;
+}
+
+.grid-container_login {
+    display: flex; /* set a flexbox */
+    flex-direction: column; /* column models */
+    align-items: center;
+    gap: 1.5rem;
+    height: 75vh; /* 75% vertical height of main */
+    justify-content: center;
+
+}
+
+.title-login{font-size: 120%;}
+
+.item-login{font-style: italic;border: 0.2rem solid #828282; padding: 0.7rem;} /* add a border */
+.item-button_login{margin-left: 35%; margin-top: 5%;}
+.item-button_rollback{margin-top: 2%;}
+
+li{list-style-type: none;} /* delete the bullet points of the list */
+
+
+

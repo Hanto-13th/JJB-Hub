@@ -1,35 +1,48 @@
 body{ 
     background-color: #56a0d3;
     font-family:'Arial';
+    color: aliceblue;
+    height: 100%;
 }
 
 .grid-container_index {
-  display: grid; /* set the grid */
-  grid-template-columns: 1fr; /* One columns */
-  gap: 1rem; /* Space between grid items */
-  grid-auto-rows: minmax(6rem, auto); /* Rows with a minimum height of 6rem */
-  justify-items: center;
-  align-items: center; /* align all items */
+    display: flex; /* set a flexbox */
+    flex-direction: column; /* column models */
+    align-items: center;
+    gap: 1.5rem;
+    height: 50vh; /* 50% vertical height of main */
+    justify-content: center;
 }
+.title_index {font-size: 150%;}
 
-/* set the items in the grid */
-.title_index {
-    grid-column: 1; 
-    grid-row: 1; 
-    font-size: 150%;
-    padding: 2rem;
-    color: #f0f8ff;
+.item-login{font-size: 120%;margin-bottom: 5%;}
+.item-create_account{font-size: 120%;margin-bottom: 5%;}
+.item-create_club{font-size: 120%;}
+
+/* create a tatami style using tatami tiles and judoka sprite */
+.tatami {
+    /* fix the position at the bottom of the page */
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    /* set the size */
+    height: 2rem; 
+    width: 100%;
+    /* url of the tiles */
+    background-image: url("/static/main/images/tatami.png");
+    background-repeat: repeat-x; /* repeat horizontally */
+    background-size: 32px 32px;  /* size of each tile */
+    border-radius: 5%; /* arround the border */
 }
-
-.item-connect, .item-create_account, .item-create_club {
-    grid-column: 2; 
-    grid-row: 4; 
-    font-size: 120%;
-    padding: 1rem;
-    text-align: center;
-   
+.judoka  {
+    /* fix the position at the bottom of the page */
+    position: fixed;
+    bottom: 2%;
+    left: 25%;
+    background-size: 64px 64px;  /* size of sprite */
+    /* set on the tatami (foreground) */
+    z-index: 100;
 }
-
 
 a {
     text-decoration: none; /* delete the underline */
@@ -42,9 +55,5 @@ a:hover {
     font-style: italic;
 }
 
-button {
-  background-color: #828282;
-  color: aliceblue;
-}
 
 
