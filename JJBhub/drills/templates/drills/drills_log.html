@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal de Drill</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'drills/css/style.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal de Drill</title>
+<!--load static file for css and link-->
+{% load static %}
+<link rel="stylesheet" href="{% static 'drills/css/drills_log.css' %}">
 </head>
 <body>
-<h1>Journal de Drill</h1>
-    <!--display all the drill using format (name : description)-->
+  <!--set the grid to manipulate items-->
+  <div class="grid-container_drills_log">
+    
+    <div class="title-drills_log">
+      <header><h1>Journal de Drill</h1></header>
+    </div>
+
+    <!--create a dynamic list which grows with the add of user drills-->
     <form action="{% url 'checkbox_drill' %}" method="post">
-        {% csrf_token %}
+      {% csrf_token %}
+      <div class="item-all_drills">
         <ul>
-            {% for drill in all_user_drill %}
-                <li>
-                    <label for="drill_{{ drill.id }}">{{ drill.name }}: {{ drill.description }}<br>Mots clés associés: {{ drill.keyword }}</label>
-                    <input type="checkbox" id="drill_{{ drill.id }}" name="drill_check" value="{{ drill.id }}">
-                </li>
-            {% endfor %}
+          {% for drill in all_user_drill %}
+            <li>
+              <label for="drill_{{ drill.id }}">
+                {{ drill.name }} : {{ drill.description }}<br>
+                Mots clés associés : {{ drill.keyword }}
+              </label>
+              <input type="checkbox" id="drill_{{ drill.id }}" name="drill_check" value="{{ drill.id }}">
+            </li>
+          {% endfor %}
         </ul>
-            <!--Buttons to delete or check if a drill is complete-->
-            <button type="submit" id="submit_btn" name="action" value="delete" onclick="return confirm('Voulez-vous vraiment supprimer ces drills ? (Aucun point ne vous seront attribués)');" disabled>Supprimer un drill</button>
-            <button type="submit" id="submit_btn" name="action" value="accomplish" onclick="return confirm('Avez vous assez drillé ?');" disabled>Drill accompli</button>
+      </div>
+
+      <!--create a row of 4 buttons-->
+        <!--the 2 buttons to submit if the drill is to delete or to accomplish-->
+      <div class="buttons-row">
+        <button type="submit" name="action" value="delete" onclick="return confirm('Voulez-vous vraiment supprimer ces drills ?');" disabled>Supprimer drill(s)</button>
+
+        <button type="submit" name="action" value="accomplish" onclick="return confirm('Avez-vous assez drillé ?');" disabled>Drill(s) accompli</button>
+        <!--the 2 buttons to go in the page to add a drill or rollback url at the user homepage-->
+        <button type="submit" formaction="{% url 'add_drill' %}" formmethod="get">Créer un drill</button>
+
+        <button type="submit" formaction="{% url 'home' %}" formmethod="get">Retour</button>
+      </div>
     </form>
-    <!--form to add drill-->
-    <form action="{% url 'add_drill' %}" method="get">
-        <button type="submit">Créer un drill</button>
-    </form>
-    <!--form for url rollback-->
-    <form action="{% url 'home' %}" method="get">
-        <button type="submit">Retour</button>
-    </form>
-    <!--load the js script for popup confirmation (permit to enabled the activation of deletion or accomplish button if at least a box is checked)-->
+    <!--connect the js script to handle the checked boxes-->
     <script src="{% static 'drills/js/script.js' %}"></script>
+  </div>
 </body>
 </html>

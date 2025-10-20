@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajout de drill</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajout de drill</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'drills/css/add_drill.css' %}">
 </head>
 <body>
-<h1>Ajouter un drill</h1>
-    <form action="{% url 'add_drill' %}" method="post">
-        {% csrf_token %}
-        <!--the form to create a drill with his name and desc, button to submit-->
-        <ul>
-            <li>
-                <label for="name">Nom du drill&nbsp;</label>
-                <input type="text" id="name" name="name" required/>
-            </li>
-            <li>
-                <label for="description">Description du drill&nbsp;</label>
-                <input type="text" id="description" name="description" required/>
-            </li>
-            <li>
-                <label for="keyword">Mots Clés associés (nécessaire pour l'accomplissement des badges, ! écrire le mot clé identique à celui du badge !)&nbsp;</label>
-                <input type="text" id="keyword" name="keyword"/>
-            </li>
-            <button type="submit">Ajout du drill</button>
-        </ul>
-    </form>
-    <!--The button to comeback in the previous page-->
-    <form action="{% url 'drills_log' %}" method="get">
-        <button type="submit">Retour</button>
-    </form>
+    <div class="grid-container_add_drill">
+        <div class="title-add_drill">
+            <header> <h1>Ajouter un drill</h1> </header>
+        </div>
+        <form action="{% url 'add_drill' %}" method="post">
+            {% csrf_token %}
+            <!--the form to create a drill with his name and desc, button to submit-->
+                <div class="item-add_drill">
+                    <ul>
+                        <li>
+                            <section>
+                                <label for="name">Nom du drill :&nbsp;</label>
+                                <input type="text" id="name" name="name" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="description">Description du drill :&nbsp;</label>
+                                <input type="text" id="description" name="description" required/>
+                            </section>
+                            <br>
+                        </li>
+                        <li>
+                            <section>
+                                <label for="keyword">Mots Clés associés :&nbsp;</label>
+                                <input type="text" id="keyword" name="keyword"/> <br>
+                                <label for="keyword">(nécessaire pour l'accomplissement des badges, ! écrire le mot clé identique à celui du badge !)&nbsp;</label>
+                            </section>
+                        </li>
+                </div>
+                <div class="item-button_submit">
+                        <button type="submit">Ajout du drill</button>
+                    </ul>
+                </div>
+                <div class="item-button_rollback">
+                    </form>
+                    <!--The button to comeback in the previous page-->
+                    <form action="{% url 'drills_log' %}" method="get">
+                        <button type="submit">Retour</button>
+                    </form>
+                </div>
+    </div>
 </body>
 </html>

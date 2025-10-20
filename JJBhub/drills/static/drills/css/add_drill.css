@@ -1,0 +1,30 @@
+body{ 
+    background-color: #56a0d3;
+    font-family:'Arial';
+    color: aliceblue;
+    height: 100%;
+}
+
+.grid-container_add_drill {
+    display: flex; /* set a flexbox */
+    flex-direction: column; /* column models */
+    align-items: center;
+    gap: 1.5rem;
+    height: 75vh; /* 50% vertical height of main */
+    justify-content: center;
+}
+.title-add_drill {font-size: 150%;}
+
+.item-add_drill{margin-bottom: 5%;}
+.item-button_submit{margin-left: 40%;margin-bottom: 10%;}
+.item-button_rollback{margin-left: 42%;}
+
+/* remove the bullet points of the list */
+li {
+  list-style-type: none;
+}
+
+button {
+  background-color: #828282;
+  color: aliceblue;
+}
