@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonTatami/Ranking</title>
+    <!--load the static file for the css stylesheet and link-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/ranking_club.css' %}">
+</head>
+<body>
+    <div class="grid-container_ranking_club">
+        <div class="title-ranking_club">
+            <header> <h1>Classement du club</h1> </header>
+            <header> <h2>{{ club.club_name }}</h2> </header>
+        </div>
+        <div class="item-all_users_ranking">
+            {% for member in members_club %}
+                {% if member.is_admin is True %}
+                    <label for="rank">(admin) {{ member }} - {{ member.points }} points</label><br>
+                    <br>
+                {% else %}
+                    <label for="rank">{{ member }} - {{ member.points }} points</label><br>
+                        <br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if request.user.is_admin is True %}
+            <div class="item-admin_settings">
+                <section>
+                    <form action="{% url 'club_settings' %}" method="post">
+                    {% csrf_token %}
+                        <button type="submit">Paramètres du club</button>
+                    </form>
+                </section>
+            </div>
+        {% endif %}
+        <div class="item-rollback_button">
+            <section>
+                <!--form for url rollback-->
+                <form action="{% url 'home' %}" method="get">
+                    <button type="submit">Retour</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

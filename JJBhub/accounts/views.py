@@ -61,6 +61,11 @@ def create_an_user(request):
         #check if the "user favorites" has the good lenght
         if len(fav_submission) > 20 or len(fav_passage) > 20 or len(fav_guard) > 20:
             return HttpResponse("soumission favorite/passage favori/garde favorite ne doivent pas dépasser 20 caractères chacun", status=404)
+        
+        #check if there are members already in this club, else the first member who creates club become admin
+        members = CustomUser.objects.filter(club=club)
+        make_admin = (len(members) == 0)
+        
         #if all good, create user and save him
         user = CustomUser.objects.create_user(username=username,
                         password=password,
@@ -71,9 +76,10 @@ def create_an_user(request):
                         points=0,
                         fav_submission=fav_submission,
                         fav_passage=fav_passage,
-                        fav_guard=fav_guard)
+                        fav_guard=fav_guard,
+                        is_admin=make_admin)
+        
         user.save()
-
         messages.success(request, f"L'utilisateur {firstname+" "+lastname} a bien été créé !")
         return redirect("index")
     return HttpResponse("Méthode non autorisée", status=405)
@@ -103,6 +109,7 @@ def account_login(request):
 #
 ##############################
 
+#just logout the user
 @login_required(login_url="login/")
 def account_logout(request):
     logout(request)

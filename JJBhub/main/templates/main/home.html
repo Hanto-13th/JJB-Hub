@@ -71,6 +71,7 @@
                             </form>
                             </section>
                     </div>
+                <!--display stats of user-->
                 <div class="item-points">
                     <section> <p>Points: {{ points }}</p> </section>
                 </div>
@@ -84,6 +85,12 @@
                     <section> <p>Garde Préférée: {{ fav_guard }}</p> </section>
                 </div>
                 <!-- differents buttons to redirect user to other pages (drills,badges...) and logout-->
+                <div class="item-ranking_club">
+                    <form action="{% url 'ranking' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Classement du club</button>
+                    </form>
+                </div>
                 <div class="item-drills_log">
                     <form action="{% url 'drills_log' %}" method="post">
                         {% csrf_token %}

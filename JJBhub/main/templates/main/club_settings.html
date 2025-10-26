@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MonTatami/Settings</title>
+<!-- load the static files with css and link him-->
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/club_settings.css' %}">
+</head>
+<body>
+    <div class="grid-container_settings_club">
+        <div class="title-settings_club">
+            <header> <h1>Paramètres du club: {{ club.club_name }}</h1> </header>
+        </div>
+        <div class="item-club_secret_key">
+            <label for="secret_key">Clé du club:</label>
+            <input type="text" id="secret_key" value="{{ club.secret_key }}" required readonly>
+        </div>
+        <br>
+        <div class="item-all_users">
+            <p>Membres du club:</p>
+            <form  action="{% url 'checkbox_admin' %}" method="post">
+                {% csrf_token %}
+                    {% for member in members_club %}
+                        {% if member.is_admin is True %}
+                            <label for="member_{{ member.id }}">{{ member }} - Admin:</label>
+                            <input type="checkbox" id="member_{{ member.id }}" name="add_admin" value="{{ member.id }}" checked>
+                            <br>
+                            <br>
+                        {% else %}
+                            <label for="member_{{ member.id }}">{{ member }} - Admin:</label>
+                            <input type="checkbox" id="member_{{ member.id }}" name="add_admin" value="{{ member.id }}">
+                            <br>
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                <button type="submit" onclick="return confirm('Modifier les admins du club ?');">Changer les admins</button>
+            </form>
+        </div>
+        <div class="item-rollback_button">
+            <section>
+                <!--form for url rollback-->
+                <form action="{% url 'ranking' %}" method="get">
+                    <button type="submit">Retour</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

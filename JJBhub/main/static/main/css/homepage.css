@@ -35,10 +35,11 @@ body{
 .item-bronze_medal   { grid-column: 4; grid-row: 6;margin-left: -70%;font-style: italic;text-align: center; } /* Bronze */
 .item-points {grid-column: 3; grid-row: 8;margin-left: 20%;font-style: italic;font-size: 120%;} /*Points*/
 
-.item-drills_log {grid-column: 6; grid-row: 3;} /*Drills page*/
-.item-badges_page {grid-column: 6; grid-row: 4;} /*Badges page*/
-.item-user_settings {grid-column: 6; grid-row: 5;} /*Settings*/
-.item-logout {grid-column: 6; grid-row: 6;} /*Logout*/
+.item-ranking_club{grid-column: 6; grid-row: 3;} /*Ranking club page*/
+.item-drills_log {grid-column: 6; grid-row: 4;} /*Drills page*/
+.item-badges_page {grid-column: 6; grid-row: 5;} /*Badges page*/
+.item-user_settings {grid-column: 6; grid-row: 6;} /*Settings*/
+.item-logout {grid-column: 6; grid-row: 7;} /*Logout*/
 
 
 

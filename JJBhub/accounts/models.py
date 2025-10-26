@@ -10,7 +10,7 @@ class Club(models.Model):
     def __str__(self):
         return self.club_name 
 
-#all the Users settings and relation between the club, the drills and the badges
+#all the Users settings and relation between the Clubs
 class CustomUser(AbstractUser):
     BELT_CHOICES = [
     ("White", "White"),
@@ -18,7 +18,11 @@ class CustomUser(AbstractUser):
     ("Purple", "Purple"),
     ("Brown", "Brown"),
     ("Black", "Black")]
+
+    #the relation One to Many between each users and their clubs
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
+
+    #all the users stats
     belt = models.CharField(max_length=10,choices=BELT_CHOICES,default="White")
     badges = models.ManyToManyField("badges.Badge",through="badges.UserBadge",blank=True)
     points = models.IntegerField(default=0)
@@ -26,9 +30,13 @@ class CustomUser(AbstractUser):
     gold_medal = models.IntegerField(default=0)
     silver_medal = models.IntegerField(default=0)
     bronze_medal = models.IntegerField(default=0)
+
     fav_submission = models.CharField(max_length=20,default="")
     fav_passage = models.CharField(max_length=20,default="")
     fav_guard = models.CharField(max_length=20,default="")
+
+    #to know if an user is admin of his club
+    is_admin = models.BooleanField(default=False)
     creation_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
