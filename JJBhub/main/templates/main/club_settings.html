@@ -3,33 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MonTatami/Settings</title>
+<title>The13thDojo/Settings</title>
 <!-- load the static files with css and link him-->
 {% load static %}
 <link rel="stylesheet" href="{% static 'main/css/club_settings.css' %}">
 </head>
 <body>
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: 100;">Paramètres du club: </span>
+        <span style="font-size: 150%;font-weight: bold;">{{ club.club_name }}</span> </h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
+    <div class="sidebar"></div>
     <div class="grid-container_settings_club">
-        <div class="title-settings_club">
-            <header> <h1>Paramètres du club: {{ club.club_name }}</h1> </header>
-        </div>
-        <div class="item-club_secret_key">
-            <label for="secret_key">Clé du club:</label>
+        <div class="item-all_settings">
+            <label for="secret_key">
+                <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: #2E27F5 2px solid;background-color: #0B78F4;border-style: inset;">
+                Clé du club: 
+                </span>
+            </label>
             <input type="text" id="secret_key" value="{{ club.secret_key }}" required readonly>
-        </div>
-        <br>
-        <div class="item-all_users">
-            <p>Membres du club:</p>
+            <br>
+            <p><span style="padding:2px;font-style: italic;font-weight: bold;border: #2E27F5 2px solid;background-color: #0B78F4;border-style: inset;">Membres du club:</span></p>
             <form  action="{% url 'checkbox_admin' %}" method="post">
                 {% csrf_token %}
                     {% for member in members_club %}
                         {% if member.is_admin is True %}
-                            <label for="member_{{ member.id }}">{{ member }} - Admin:</label>
+                            <label for="member_{{ member.id }}">{{ member }} <span style="color: green;font-weight: bold;">- Admin:</span></label>
                             <input type="checkbox" id="member_{{ member.id }}" name="add_admin" value="{{ member.id }}" checked>
                             <br>
                             <br>
                         {% else %}
-                            <label for="member_{{ member.id }}">{{ member }} - Admin:</label>
+                            <label for="member_{{ member.id }}"> {{ member }} <span style="color: red;font-weight: 750;">- Admin:</span></label>
                             <input type="checkbox" id="member_{{ member.id }}" name="add_admin" value="{{ member.id }}">
                             <br>
                             <br>
@@ -47,5 +53,6 @@
             </section>
         </div>
     </div>
+    <footer></footer>
 </body>
 </html>

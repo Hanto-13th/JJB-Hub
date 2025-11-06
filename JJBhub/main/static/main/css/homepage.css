@@ -1,61 +1,147 @@
 body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
+    margin: 0;
+    background-image: url("../images/wall.png");
+    background-size: 64px;
+    background-repeat: repeat-y repeat-x;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    height: 100%;
+    z-index: -5;
+
+}
+
+
+header {
+  position: fixed;
+  background-image: url("../images/roof.png");
+  background-size: 150px;
+  background-repeat: repeat-y repeat-x;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    color: black;
+    z-index: 2;
 }
 
 .grid-container_homepage {
   display: grid; /* set the grid */
   grid-template-columns: repeat(4, 1fr); /* Four equal columns */
   grid-template-rows: repeat(6,minmax(5rem,6rem)); /* set six equal rows from 5rem to 6rem size */
-  color: aliceblue;
-
 
 }
 
 /*set all the items in the grid */
-.title_homepage {
-    grid-column: 1/-1; /* Spans two columns */
-    grid-row: 1; 
-    font-size: 150%;
-    color: #f0f8ff;
-    text-align: left;
 
+.sidebar_left {
+  position: fixed;
+  width: 20vw;
+  height: 100vh;
+  background-image: url("../images/planck.jpg");
+  background-size: 64px;
+  background-repeat: repeat-y repeat-x;
+  z-index: -1;
 }
-
 .item-club {grid-column: 1; grid-row: 3;justify-items: center;align-items: center;text-align: center;} /*Club*/
 .item-belt {grid-column: 1; grid-row: 4;justify-items: center;align-items: center;text-align: center;} /*Belt*/
 .item-fav_submission {grid-column: 1; grid-row: 5; justify-items: center; align-items: center;text-align: center;} /*Submission*/
 .item-fav_passage {grid-column: 1; grid-row: 6; justify-items: center; align-items: center;text-align: center;} /*Passage*/
 .item-fav_guard {grid-column: 1; grid-row: 7; justify-items: center; align-items: center;text-align: center;} /*Guard*/
 
+.center_column {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../images/glass.png");
+  background-size: auto;
+  background-repeat: repeat-y repeat-x;
+  opacity: 0.6;
+  z-index: -3;
+}
 .item-victory {grid-column: 3/4; grid-row: 2;font-size: 600%;justify-items:center;align-items:center;text-align: center;margin-left: -40%;font-family: Impact, sans-serif;} /*Victory*/
 .item-victory_button {grid-column: 3; grid-row: 5;justify-items:center;align-items:center;margin-left: -40%;} /*Victory button*/
-.item-gold_medal  { grid-column: 2; grid-row: 6;margin-left: 20%;font-style: italic;text-align: center;} /* Gold */
-.item-silver_medal  { grid-column: 3; grid-row: 6;margin-left: -25%;font-style: italic;text-align: center;} /* Silver */
-.item-bronze_medal   { grid-column: 4; grid-row: 6;margin-left: -70%;font-style: italic;text-align: center; } /* Bronze */
-.item-points {grid-column: 3; grid-row: 8;margin-left: 20%;font-style: italic;font-size: 120%;} /*Points*/
+.item-gold_medal  { grid-column: 2; grid-row: 6;margin-left: 10%;font-style: italic;text-align: center;} /* Gold */
+.item-silver_medal  { grid-column: 3; grid-row: 6;margin-left: -40%;font-style: italic;text-align: center;} /* Silver */
+.item-bronze_medal   { grid-column: 4; grid-row: 6;margin-left: -95%;font-style: italic;text-align: center; } /* Bronze */
+.item-points {grid-column: 3; grid-row: 8;margin-left: 15%;font-style: italic;font-size: 120%;} /*Points*/
 
-.item-ranking_club{grid-column: 6; grid-row: 3;} /*Ranking club page*/
-.item-drills_log {grid-column: 6; grid-row: 4;} /*Drills page*/
-.item-badges_page {grid-column: 6; grid-row: 5;} /*Badges page*/
-.item-user_settings {grid-column: 6; grid-row: 6;} /*Settings*/
-.item-logout {grid-column: 6; grid-row: 7;} /*Logout*/
+.sidebar_right{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20vw;
+  height: 100vh;
+  background-image: url("../images/planck.jpg");
+  background-size: 64px;
+  background-repeat: repeat-y repeat-x;
+  z-index: -1;
+}
+.item-ranking_club{grid-column: 5; grid-row: 3;} /*Ranking club page*/
+.item-drills_log {grid-column: 5; grid-row: 4;} /*Drills page*/
+.item-badges_page {grid-column: 5; grid-row: 5;} /*Badges page*/
+.item-user_settings {grid-column: 5; grid-row: 6;} /*Settings*/
+.item-logout {grid-column: 5; grid-row: 7;} /*Logout*/
+
+.tatami{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 8.5vh;
+  background-image: url("../images/tatami.png");
+  background-size: 32px;
+  background-repeat: repeat-x;
+  z-index: -4;
+}
+
+.ground{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 4vh;
+  background-image: url("../images/wall.png");
+  background-size: 32px;
+  background-repeat: repeat-x;
+  z-index: -2;
+}
 
 
-
-/*set buttons style*/
 button {
-  background-color: #828282;
+  background-color: #074D9C;
   color: aliceblue;
-  border: none;
-  padding: 0.3rem 1.5rem;
-  margin-bottom: 5%;
+  border: outset #033c7d;
+  padding: 0.3em 1em;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.75rem;
+  font-size: 1em;
 }
 
 button:hover {
-  background-color: #9b9b9b;
+  background-color: #217de7;
 }
+
+li{list-style-type: none;} /* delete the bullet points of the list */
 

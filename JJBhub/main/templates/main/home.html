@@ -9,29 +9,59 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'main/css/homepage.css' %}">
 <body>
+    <!--set the container for the header/title-->
+    <header> 
+        <h1> 
+            <span style="font-size: 150%;font-weight: bold;color: #FFD95C;border: 4px outset #F54927;background-color: #F5B027;padding: 8px;box-shadow: 1px 0 5px 7px rgba(0,0,0,0.3);">
+                Bienvenue, {{ firstname }}
+            </span>
+        </h1> 
+        <div class="logo_header"><img src="{% static 'main/images/oss.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
+    <div class="sidebar_left"></div>
     <!--create a grid container to manipulate all items-->
+    <!--each item has a container to manipulate in the grid-->
     <div class="grid-container_homepage">
-        <!-- the container for the title -->
-        <div class="title_homepage">
-        <header><h1>Bienvenue, {{ firstname }}</h1></header>
-        </div>
-            <!--each item has a container to manipulate in the grid-->
+            <!--LEFT COLUMN-->
                 <div class="item-club">
-                    <section> <p>Ton club: {{ club }}</p> </section>
+                    <section> 
+                        <p><span style="border: 4px inset #033c7d;background-color: aliceblue;padding: 5px;font-weight: bold;">{{ club }}</span></p> 
+                    </section>
                 </div>
                 <div class="item-belt">
                         <section>
-                        <p>Ta ceinture: {{ belt }}</p>
+                        <p><span style="border: 4px inset #033c7d;background-color: aliceblue;padding: 5px;font-weight: bold;">{{ belt }} Belt</span></p>
                         <!--form to permit user change his belt (+100 points)-->
                             <form action="new_belt" method="post">
                                 {% csrf_token %}
-                            <button type="submit" onclick="return confirm('Passez vous à la ceinture supérieure ?');">Passage de ceinture</button>
+                            <button style="padding: 2px;" type="submit" onclick="return confirm('Passez vous à la ceinture supérieure ?');">
+                                <span style="font-size: 75%;">UP ++</span>
+                            </button>
                             </form>
                         </section>
                 </div>
+                <div class="item-fav_submission">
+                    <section> 
+                        <p><span style="border: 4px inset #033c7d;background-color: aliceblue;padding: 5px;font-weight: bold;">Soumission: {{ fav_submission }}</span></p>
+                    </section>
+                </div>
+                <div class="item-fav_passage">
+                    <section> 
+                        <p><span style="border: 4px inset #033c7d;background-color: aliceblue;padding: 5px;font-weight: bold;">Passage: {{ fav_passage }}</span></p> 
+                    </section>
+                </div>
+                <div class="item-fav_guard">
+                    <section>
+                        <p><span style="border: 4px inset #033c7d;background-color: aliceblue;padding: 5px;font-weight: bold;">Garde: {{ fav_guard }}</span></p> 
+                    </section>
+                </div>
+            
+            <!--CENTER COLUMN-->
+            <div class="center_column"></div>
+                <!--display stats of user-->
                 <div class="item-victory">
                     <section>
-                    <p>Victoires: {{ victory }}</p>
+                    <p><span> Victoires: {{ victory }} </span></p>
                     </section>
                 </div>
                 <div class="item-victory_button">
@@ -45,7 +75,7 @@
                 </div>
                     <div class="item-gold_medal">
                             <section>
-                            <p>Médaille d'or: {{ gold_medal }}</p>
+                            <p><span style="border: 4px inset #F54927;background-color: #fab62e;padding: 5px;font-weight: bold;">Gold: {{ gold_medal }}</span></p>
                             <!--form to permit user count his competition medal (+30 points/gold, +20 points/silver, +10 points/bronze)-->
                             <form action="new_medal" method="post">
                                 {% csrf_token %}
@@ -55,7 +85,7 @@
                     </div>
                     <div class="item-silver_medal">
                             <section>
-                            <p>Médaille d'argent: {{ silver_medal }}</p>
+                            <p><span style="border: 4px inset #F54927;background-color: #cac9c8;padding: 5px;font-weight: bold;">Silver: {{ silver_medal }}</span></p>
                             <form action="new_medal" method="post">
                                 {% csrf_token %}
                                 <button type="submit" name="medal" value="silver" onclick="return confirm('Avez vous remporté une nouvelle médaille (argent) ?');">+1 médaille d'argent</button>
@@ -64,26 +94,20 @@
                     </div>
                     <div class="item-bronze_medal">
                             <section>
-                            <p>Médaille de bronze: {{ bronze_medal }}</p>
+                            <p><span style="border: 4px inset #F54927;background-color: #b34e0f;padding: 5px;font-weight: bold;">Bronze: {{ bronze_medal }}</span></p>
                             <form action="new_medal" method="post">
                                 {% csrf_token %}
                                 <button type="submit" name="medal" value="bronze" onclick="return confirm('Avez vous remporté une nouvelle médaille (bronze) ?');">+1 médaille de bronze</button>
                             </form>
                             </section>
                     </div>
-                <!--display stats of user-->
                 <div class="item-points">
-                    <section> <p>Points: {{ points }}</p> </section>
+                    <section>
+                        <p><span style="font-weight: bold;">Points: {{ points }}</span></p> 
+                    </section>
                 </div>
-                <div class="item-fav_submission">
-                    <section> <p>Soumission Préférée: {{ fav_submission }}</p> </section>
-                </div>
-                <div class="item-fav_passage">
-                    <section> <p>Passage Préféré: {{ fav_passage }}</p> </section>
-                </div>
-                <div class="item-fav_guard">
-                    <section> <p>Garde Préférée: {{ fav_guard }}</p> </section>
-                </div>
+
+            <!--RIGHT COLUMN-->
                 <!-- differents buttons to redirect user to other pages (drills,badges...) and logout-->
                 <div class="item-ranking_club">
                     <form action="{% url 'ranking' %}" method="post">
@@ -101,7 +125,6 @@
                     <form action="{% url 'badges_page' %}" method="post">
                         {% csrf_token %}
                         <button type="submit">Mes Badges</button>
-                        
                     </form>
                 </div>
                 <div class="item-user_settings">
@@ -116,7 +139,9 @@
                         <button type="submit">Se déconnecter</button>
                     </form>
                 </div>
-
     </div>
+    <div class="sidebar_right"></div>
+    <footer class="tatami"></footer>
+    <footer class="ground"></footer>
 </body>
 </html>

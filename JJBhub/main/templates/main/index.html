@@ -3,28 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MonTatami/Accueil</title>
+<title>The13thDojo/Accueil</title>
 <!--load the static file for the css stylesheet and link-->
 {% load static %}
 <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
 </head>
 <body>
+  <!--set the container for the header/title-->
+  <header> 
+        <h1> <span style="font-size: 150%;font-weight: bolder;">Bienvenue dans Le Treizième Dojo</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
   <!--set the grid container to manipulate items-->
   <div class="grid-container_index">
-    <!--set the container for the title-->
-    <div class="title_index">
-      <header><h1>Bienvenue sur "Mon Tatami"</h1></header>
-    </div>
       <main>
         <!--all the containers for manipulate items in grid-->
         <div class="item-login">
-          <section> <a href="{% url 'login_page' %}">Se connecter <br> </a> </section>
+          <section> <a href="{% url 'login_page' %}" class="connect">Se connecter <br> </a> </section>
         </div>
         <div class="item-create_account">
-          <section> <a href="{% url 'create_account_page' %}">Créer un compte <br> </a> </section> 
+          <section> <a href="{% url 'create_account_page' %}" class="create_user">Créer un compte <br> </a> </section> 
         </div>
         <div class="item-create_club">
-          <section> <a href="{% url 'create_club_page' %}">Créer son club <br> </a> </section>
+          <section> <a href="{% url 'create_club_page' %}" class="create_club">Créer son club <br> </a> </section>
         </div>
       </main>
     </div>

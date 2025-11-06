@@ -1,11 +1,69 @@
-body {
-  background-color: #56a0d3;
-  font-family: Arial;
-  color: aliceblue;
+body { 
   margin: 0;
-  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+  background-image: url("../images/black_belt.png");
+  background-repeat: repeat-x repeat-y;
+  background-size: 64px ;
 }
 
+header {
+  position: relative;
+  background-color: #0B78F4;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #2E27F5;
+  border-bottom: outset #2E27F5;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  color: aliceblue;
+}
+main {
+  border: 2px white outset;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 10px;
+  margin-top: 2%;
+  background-color: white;
+
+}
 /*set the main grid container in flexbox column */
 .grid-container_drills_log {
   display: flex;
@@ -13,14 +71,9 @@ body {
   align-items: center;
   gap: 3rem;
   width: 100%;
-  min-height: 100vh;
+  max-width: 100vw;
 }
 
-.title-drills_log {
-  text-align: center;
-  font-size: 1.5rem;
-  margin: 1rem 0;
-}
 
 /*set all user drills in grid with 2 columns spaced by 300 px */
 .item-all_drills ul {
@@ -28,10 +81,12 @@ body {
   grid-template-columns: repeat(2, minmax(200px, 1fr));
   gap: 1rem 4rem;
   column-gap: 300px;
+  row-gap: 2em;
   list-style: none;
   padding: 0;
   margin: 0 auto;
   width: fit-content;
+  margin-top: 5%;
 }
 
 .item-all_drills li {
@@ -46,23 +101,27 @@ body {
   gap: 2rem;
   flex-wrap: wrap;
   margin-top: 2rem;
+  margin-bottom: 2%;
   width: 100%;
 }
 
 /*set buttons style*/
 button {
-  background-color: #828282;
+  background-color: #074D9C;
   color: aliceblue;
-  border: none;
-  padding: 0.3rem 1.5rem;
-  margin-bottom: 5%;
+  border: outset #033c7d;
+  padding: 0.3rem 1rem;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
 }
 
 button:hover {
-  background-color: #9b9b9b;
+  background-color: #217de7;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
 }
 
 

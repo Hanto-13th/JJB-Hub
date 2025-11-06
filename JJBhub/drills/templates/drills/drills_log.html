@@ -9,29 +9,32 @@
 <link rel="stylesheet" href="{% static 'drills/css/drills_log.css' %}">
 </head>
 <body>
+  <header> 
+        <h1> <span style="font-size: 150%;font-weight: bolder;">Journal de Drill</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+  </header>
   <!--set the grid to manipulate items-->
   <div class="grid-container_drills_log">
     
-    <div class="title-drills_log">
-      <header><h1>Journal de Drill</h1></header>
-    </div>
-
     <!--create a dynamic list which grows with the add of user drills-->
-    <form action="{% url 'checkbox_drill' %}" method="post">
-      {% csrf_token %}
-      <div class="item-all_drills">
-        <ul>
-          {% for drill in all_user_drill %}
-            <li>
-              <label for="drill_{{ drill.id }}">
-                {{ drill.name }} : {{ drill.description }}<br>
-                Mots clés associés : {{ drill.keyword }}
-              </label>
-              <input type="checkbox" id="drill_{{ drill.id }}" name="drill_check" value="{{ drill.id }}">
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
+      <form action="{% url 'checkbox_drill' %}" method="post">
+        {% csrf_token %}
+        <div class="item-all_drills">
+          <main>
+            <ul>
+              {% for drill in all_user_drill %}
+                <li>
+                  <label for="drill_{{ drill.id }}">
+                    {{ drill.name }} : {{ drill.description }}<br>
+                    Mots clés associés : {{ drill.keyword }}
+                  </label>
+                  <input type="checkbox" id="drill_{{ drill.id }}" name="drill_check" value="{{ drill.id }}">
+                </li>
+              {% endfor %}
+            </ul>
+          </main>
+        </div>
 
       <!--create a row of 4 buttons-->
         <!--the 2 buttons to submit if the drill is to delete or to accomplish-->
@@ -40,7 +43,7 @@
 
         <button type="submit" name="action" value="accomplish" onclick="return confirm('Avez-vous assez drillé ?');" disabled>Drill(s) accompli</button>
         <!--the 2 buttons to go in the page to add a drill or rollback url at the user homepage-->
-        <button type="submit" formaction="{% url 'add_drill' %}" formmethod="get">Créer un drill</button>
+        <button type="button" onclick="window.location.href='{% url 'add_drill' %}'">Créer un drill</button>
 
         <button type="submit" formaction="{% url 'home' %}" formmethod="get">Retour</button>
       </div>

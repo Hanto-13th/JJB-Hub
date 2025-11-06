@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
     
 #the Clubs has a access by secret key (Generated 6 random character)
 class Club(models.Model):
-    club_name = models.CharField(max_length=200)
+    club_name = models.CharField(max_length=30)
     secret_key = models.CharField(max_length=6)
     creation_date = models.DateField(auto_now_add=True)
 

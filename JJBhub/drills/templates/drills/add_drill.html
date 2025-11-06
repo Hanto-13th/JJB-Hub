@@ -8,40 +8,44 @@
 <link rel="stylesheet" href="{% static 'drills/css/add_drill.css' %}">
 </head>
 <body>
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: bold;">Ajouter un drill</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
     <div class="grid-container_add_drill">
-        <div class="title-add_drill">
-            <header> <h1>Ajouter un drill</h1> </header>
-        </div>
         <form action="{% url 'add_drill' %}" method="post">
             {% csrf_token %}
             <!--the form to create a drill with his name and desc, button to submit-->
                 <div class="item-add_drill">
-                    <ul>
-                        <li>
-                            <section>
-                                <label for="name">Nom du drill :&nbsp;</label>
-                                <input type="text" id="name" name="name" required/>
-                            </section>
-                            <br>
-                        </li>
-                        <li>
-                            <section>
-                                <label for="description">Description du drill :&nbsp;</label>
-                                <input type="text" id="description" name="description" required/>
-                            </section>
-                            <br>
-                        </li>
-                        <li>
-                            <section>
-                                <label for="keyword">Mots Clés associés :&nbsp;</label>
-                                <input type="text" id="keyword" name="keyword"/> <br>
-                                <label for="keyword">(nécessaire pour l'accomplissement des badges, ! écrire le mot clé identique à celui du badge !)&nbsp;</label>
-                            </section>
-                        </li>
+                    <main>
+                        <ul>
+                            <li>
+                                <section>
+                                    <label for="name">Nom du drill :&nbsp;</label>
+                                    <input type="text" id="name" name="name" required/>
+                                </section>
+                                <br>
+                            </li>
+                            <li>
+                                <section>
+                                    <label for="description">Description du drill :&nbsp;</label>
+                                    <input type="text" id="description" name="description" required/>
+                                </section>
+                                <br>
+                            </li>
+                            <li>
+                                <section>
+                                    <label for="keyword">Mots Clés associés :&nbsp;</label>
+                                    <input type="text" id="keyword" name="keyword"/> <br>
+                                    <label for="keyword">(nécessaire pour l'accomplissement des badges, ! écrire le mot clé identique à celui du badge !)</label>
+                                </section>
+                            </li>
+                        </ul>
+                    </main>
                 </div>
                 <div class="item-button_submit">
                         <button type="submit">Ajout du drill</button>
-                    </ul>
                 </div>
                 <div class="item-button_rollback">
                     </form>

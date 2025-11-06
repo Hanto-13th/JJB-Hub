@@ -1,24 +1,101 @@
-body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
-    color: aliceblue;
-    
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: aliceblue;
+  background-image: url("../images/black_belt.png");
+  background-repeat: repeat-x repeat-y;
+  background-size: 64px ;
 }
 
-.grid-container_settings_club {
-    display: flex; /* set a flexbox */
-    flex-direction: column; /* column models */
-    align-items: left;
-    gap: 1.5rem;
-    justify-content: center;
+header {
+  position: relative;
+  background-color: #0B78F4;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #2E27F5;
+  border-bottom: outset #2E27F5;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
 }
-.title-settings_club {font-size: 150%;text-align: center;}
-.item-all_users{font-size: 100%;margin-bottom: 5%;text-align: center;}
 
-button {
-  background-color: #828282;
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+  text-align: left;
   color: aliceblue;
 }
 
-p {font-style: italic;
- text-decoration: underline 2px;}
+.sidebar{
+  position: fixed;
+  width: 25%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgb(121, 173, 219);
+}
+
+.grid-container_settings_club {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 20px;
+}
+
+.item-all_settings {
+  font-size: 100%;
+  text-align: left;
+  
+}
+
+.item-rollback_button {
+  margin-top: 2%;
+}
+
+
+button {
+  background-color: #074D9C;
+  color: aliceblue;
+  border: outset #033c7d;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #217de7;
+}
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}

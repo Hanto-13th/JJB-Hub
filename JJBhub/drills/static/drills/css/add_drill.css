@@ -1,8 +1,65 @@
-body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
-    color: aliceblue;
-    height: 100%;
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  height: 100%;
+  width: 100%;
+  background-color: aliceblue;
+  background-image: url("../images/black_belt.png");
+  background-repeat: repeat-x repeat-y;
+  background-size: 64px ;
+}
+
+header {
+  position: relative;
+  background-color: #0B78F4;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #2E27F5;
+  border-bottom: outset #2E27F5;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  color: aliceblue;
+}
+
+main{
+  border: 2px aliceblue outset;
+  background-color: white;
+  padding: 10px;
 }
 
 .grid-container_add_drill {
@@ -13,10 +70,10 @@ body{
     height: 75vh; /* 50% vertical height of main */
     justify-content: center;
 }
-.title-add_drill {font-size: 150%;}
 
 .item-add_drill{margin-bottom: 5%;}
-.item-button_submit{margin-left: 40%;margin-bottom: 10%;}
+
+.item-button_submit{margin-left: 40%;margin-bottom: 5%;}
 .item-button_rollback{margin-left: 42%;}
 
 /* remove the bullet points of the list */
@@ -24,7 +81,17 @@ li {
   list-style-type: none;
 }
 
+/*set buttons style*/
 button {
-  background-color: #828282;
+  background-color: #074D9C;
   color: aliceblue;
+  border: outset #033c7d;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #217de7;
 }

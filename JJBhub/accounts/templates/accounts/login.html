@@ -9,11 +9,14 @@
 <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 </head>
 <body>
+    <!--set the container for the header/title-->
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: bold;">Connexion au compte</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'accounts/images/oss.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
     <!--set a container to manipulate items-->
     <div class="grid-container_login">
-        <div class="title-login">
-            <header><h1>Connexion au compte</h1></header>
-        </div>
             <!--form to log an user-->
             <form action="{% url 'account_login' %}" method="post">
                 {% csrf_token %}
@@ -22,7 +25,11 @@
                     <li>
                         <div class="item-username">
                             <section>
-                            <label for="username">Nom d'utilisateur :&nbsp;</label>
+                            <label for="username">
+                                <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                    Nom d'utilisateur 
+                                </span>
+                            </label>
                             <input type="text" id="username" name="username" required/>
                             </section>
                         </div>
@@ -31,7 +38,11 @@
                     <li>
                         <div class="item-password">
                             <section>
-                            <label for="password">Mot de Passe :&nbsp;</label>
+                            <label for="password">
+                                <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                    Mot de passe 
+                                </span>
+                            </label>
                             <input type="password" id="password" name="password" required/>
                             </section>
                         </div>

@@ -1,22 +1,107 @@
-body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
-    color: aliceblue;
-    
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  background-color: #960018;
+  background-image: url("../images/black_belt.png");
+  background-repeat: repeat-x repeat-y;
+  background-size: 64px ;
+
 }
+
+header {
+  position: relative;
+  background-color: #0B78F4;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #2E27F5;
+  border-bottom: outset #2E27F5;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 85%; 
+  width: 100%;  
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  color: aliceblue;
+}
+h2 {
+  text-align: center;
+  color: aliceblue;
+}
+
+.golden_line-left{position: absolute;
+  left: 5%;
+  width: 2vw;
+  height: 100vh;
+  background-color: #f4c311e6;
+
+}
+.red_carpet{position: fixed;
+  left: 35%;
+  width: 30%;
+  height: 100vh;
+  z-index: -1;
+  background-color: #E73121;
+}
+.golden_line-right{position: absolute;
+  right: 5%;
+  width: 2vw;
+  height: 100vh;
+  background-color: #f4c311e6;
+
+}
+
 
 .grid-container_ranking_club {
     display: flex; /* set a flexbox */
     flex-direction: column; /* column models, all items are centered */
     align-items: center; 
-    gap: 1.5rem;
+    gap: 1rem;
     justify-content: center;
 }
-/* settings of main widgets */
-.title-ranking_club {font-size: 150%;text-align: center;}
-.item-all_users_ranking{font-size: 100%;margin-bottom: 5%;text-align: center;}
+
+.item-all_users_ranking{font-size: 100%;margin-top: 5%;text-align: center;}
 
 button {
-  background-color: #828282;
+  background-color: #074D9C;
   color: aliceblue;
+  border: outset #033c7d;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #217de7;
 }

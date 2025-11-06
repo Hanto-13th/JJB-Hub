@@ -14,11 +14,14 @@
 <link rel="stylesheet" href="{% static 'accounts/css/create_club.css' %}">
 </head>
 <body>
+    <!--set the container for the header/title-->
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: bold;">Créez ton club</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'accounts/images/oss.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
     <!--create a container to manipulate items-->
     <div class="grid-container_create_club">
-        <div class="title-create_club">
-            <header> <h1>Créez un Club</h1> </header>
-        </div>
         <!--form to create a club using informations-->
         <form action="{% url 'create_a_club' %}" method="post">
             {% csrf_token %}
@@ -26,7 +29,11 @@
                 <ul>
                     <li>
                         <section>
-                            <label for="club_name">Nom du Club&nbsp;</label>
+                            <label for="club_name">
+                                <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Nom du club
+                                </span>
+                            </label>
                             <input type="text" id="club_name" name="club_name" required/>
                         </section>
                         <br>
@@ -34,9 +41,17 @@
                     <li>
                     <!--the secret key is only to permit each user join the good club (called secret key but it's just to make differences between same name club)-->
                         <section>
-                            <label for="secret_key">Clé Secrète:&nbsp;</label>
+                            <label for="secret_key">
+                                <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                    Clé Secrète 
+                                </span>
+                            </label>
                             <input type="text" id="secret_key" name="secret_key" value="{{ secret_key }}" required readonly/> <br>
-                            <label for="secret_key">(à conserver précieusement pour l'inscription des adhérents)&nbsp;</label>
+                            <label for="secret_key">
+                                <span>
+                                    (à conserver pour l'inscription des adhérents)&nbsp;
+                                </span>
+                            </label>
                         </section>
                     </li>
                     <!--button to submit-->

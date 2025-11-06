@@ -1,12 +1,62 @@
 body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
-    color: aliceblue;
+    margin: 0;
+    background-color: rgb(121, 173, 219);
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    height: 100%;
+    background-image: url("../images/black_belt.png");
+    background-repeat: repeat-x repeat-y;
+    background-size: 64px ;
 }
 
-button {
-  background-color: #828282;
-  color: aliceblue;
+
+header {
+  position: relative;
+  background-color: #ffffff;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #e9e9e9;
+  border-bottom: outset #e9e9e9;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+    position: relative;
+    text-align: center;
+    color: black;
+    z-index: 2;
 }
 
 .grid-container_create_account {
@@ -19,10 +69,29 @@ button {
 
 }
 
-.title-create_account{font-size: 120%;margin-top: 5%;}
 
-.item-form_user{font-style: italic;border: 0.2rem solid #828282; padding: 0.7rem;} /* add a border */
-.item-button_create_user{margin-left: 30%; margin-top: 5%;}
+.item-form_user{font-style: italic;
+  border: 0.2rem inset aliceblue;
+  background-color: #ffffff;
+  padding: 0.7rem;
+  margin-top: 5%;
+} /* add a border */
+
+.item-button_create_user{margin-left: 25%; margin-top: 5%;}
 .item-button_rollback{margin-top: 2%;}
+
+button {
+  background-color: #074D9C;
+  color: aliceblue;
+  border: outset #033c7d;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #217de7;
+}
 
 li{list-style-type: none;} /* delete the bullet points of the list */

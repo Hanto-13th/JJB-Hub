@@ -9,18 +9,26 @@
     <link rel="stylesheet" href="{% static 'main/css/ranking_club.css' %}">
 </head>
 <body>
+    <header> 
+        <h1><span style="font-size: 150%;">Classement du club</span></h1>
+        <h2><span style="font-size: 120%;">{{ club.club_name }}</span></h2>
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
+    
+    <div class="red_carpet">
+        <div class="golden_line-left"></div>
+        <div class="golden_line-right"></div>
+    </div>
+    
     <div class="grid-container_ranking_club">
-        <div class="title-ranking_club">
-            <header> <h1>Classement du club</h1> </header>
-            <header> <h2>{{ club.club_name }}</h2> </header>
-        </div>
         <div class="item-all_users_ranking">
             {% for member in members_club %}
                 {% if member.is_admin is True %}
-                    <label for="rank">(admin) {{ member }} - {{ member.points }} points</label><br>
+                    <label for="rank"><span style="color: green;font-weight: bolder;">(admin) </span><span style="font-weight: bold;">{{ member }}</span><span> - {{ member.points }} points</span></label><br>
                     <br>
                 {% else %}
-                    <label for="rank">{{ member }} - {{ member.points }} points</label><br>
+                    <label for="rank"><span style="font-weight: bold;">{{ member }}</span><span> - {{ member.points }} points</span></label><br>
                         <br>
                 {% endif %}
             {% endfor %}

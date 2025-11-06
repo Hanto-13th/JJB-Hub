@@ -20,11 +20,14 @@
 <link rel="stylesheet" href="{% static 'accounts/css/create_account.css' %}">
 </head>
 <body>
+    <!--set the container for the header/title-->
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: bold;">Créez ton compte</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'accounts/images/oss.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
     <!--create a grid to manipulate items-->
     <div class="grid-container_create_account">
-        <div class="title-create_account">
-            <header> <h1>Créez ton compte</h1> </header>
-        </div>
             <!--form to create an user-->
             <form action="{% url 'create_an_user' %}" method="post">
                 {% csrf_token %}
@@ -33,28 +36,44 @@
                     <ul>
                         <li>
                             <section>
-                                <label for="username">Nom d'utilisateur :&nbsp;</label>
+                                <label for="username">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Nom d'utilisateur
+                                    </span>
+                                </label>
                                 <input type="text" id="username" name="username" required/>
                             </section>
                             <br>
                         </li>
                         <li>
                             <section>
-                                <label for="password">Mot de Passe :&nbsp;</label>
+                                <label for="password">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Mot de passe
+                                    </span>
+                                </label>
                                 <input type="password" id="password" name="password" required/>
                             </section>
                             <br>
                         </li>
                         <li>
                             <section>
-                                <label for="firstname">Prénom :&nbsp;</label>
+                                <label for="firstname">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Prénom
+                                    </span>
+                                </label>
                                 <input type="text" id="firstname" name="firstname" required/>
                             </section>
                             <br>
                         </li>
                         <li>
                             <section>
-                                <label for="lastname">Nom :&nbsp;</label>
+                                <label for="lastname">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Nom 
+                                    </span>
+                                </label>
                                 <input type="text" id="lastname" name="lastname" required/>
                             </section>
                             <br>
@@ -62,7 +81,11 @@
                         <li>
                             <!--it's the secret key gived when a club is created-->
                             <section>
-                                <label for="club_secret_key">Clé du club :&nbsp;</label>
+                                <label for="club_secret_key">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Clé du club 
+                                    </span>
+                                </label>
                                 <input type="text" id="club_secret_key" name="club_secret_key" required/>
                             </section>
                             <br>
@@ -70,7 +93,11 @@
                         <li>
                             <section>
                                 <!--default = white belt-->
-                                <label for="belt">Couleur de ceinture :&nbsp;</label>
+                                <label for="belt">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Couleur de ceinture 
+                                    </span>
+                                </label>
                                 <select id="belt" name="belt">
                                     <option>White</option>
                                     <option>Blue</option>
@@ -83,21 +110,33 @@
                         </li>
                         <li>
                             <section>
-                                <label for="fav_submission">Ta soumission préférée :&nbsp;</label>
+                                <label for="fav_submission">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Ta soumission préferée 
+                                    </span>
+                                </label>
                                 <input type="text" id="fav_submission" name="fav_submission" required/>
                             </section>
                             <br>
                         </li>
                         <li>
                             <section>
-                                <label for="fav_passage">Ton passage de garde préféré :&nbsp;</label>
+                                <label for="fav_passage">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Ton passage préferé
+                                    </span>
+                                </label>
                                 <input type="text" id="fav_passage" name="fav_passage" required/>
                             </section>
                             <br>
                         </li>
                         <li>
                             <section>
-                                <label for="fav_guard">Ta garde préférée :&nbsp;</label>
+                                <label for="fav_guard">
+                                    <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: aliceblue 2px;background-color: aliceblue;border-style: inset;">
+                                        Ta garde préferée 
+                                    </span>
+                                </label>
                                 <input type="text" id="fav_guard" name="fav_guard" required/>
                             </section>
                             <br>
