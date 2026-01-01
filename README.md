@@ -1,7 +1,9 @@
 JJB Hub
+
 A website project using Django framework to create a 'online HUB' for the JJB praticeers based on a gamification system 
 
 ⚠️ Important Notes
+
 ⚠️ Project be in pause and still in developpement
 
 ⚠️ The project run actually with POSTGRESQL and modification must be done to use others models
@@ -43,13 +45,6 @@ pip install django
 
 ▶️ Usage
 Create a template of website and deploy 
-
-📘 Example Usage
-Portfolio
-
-Blog
-
-Curriculum Vitae
 
 🤝 Contributing
 
