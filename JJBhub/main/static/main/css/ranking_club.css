@@ -3,9 +3,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   background-color: #960018;
-  background-image: url("../images/black_belt.png");
-  background-repeat: repeat-x repeat-y;
-  background-size: 64px ;
+  background-image: 
+    url("../images/blue_belt.png"),
+    url("../images/white_belt.png");
+  background-repeat: repeat,repeat;
+  background-size: 150px,150px;
+  background-position: 0 0, 75px 50px;
 
 }
 

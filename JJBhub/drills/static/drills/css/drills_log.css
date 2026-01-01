@@ -5,16 +5,19 @@ body {
   height: 100%;
   width: 100%;
   background-color: aliceblue;
-  background-image: url("../images/black_belt.png");
-  background-repeat: repeat-x repeat-y;
-  background-size: 64px ;
+  background-image: 
+    url("../images/black_belt.png"),
+    url("../images/white_belt.png");
+  background-repeat: repeat,repeat;
+  background-size: 150px,150px;
+  background-position: 0 0, 75px 50px;
+
 }
 
 header {
   position: relative;
   background-color: #0B78F4;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
   border-top: none;
@@ -61,7 +64,10 @@ main {
   padding-right: 150px;
   padding-bottom: 10px;
   margin-top: 2%;
-  background-color: white;
+  background-image: url("../images/log.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
 
 }
 /*set the main grid container in flexbox column */
@@ -75,7 +81,7 @@ main {
 }
 
 
-/*set all user drills in grid with 2 columns spaced by 300 px */
+/*set all user drills in grid with 2 columns spaced*/
 .item-all_drills ul {
   display: grid;
   grid-template-columns: repeat(2, minmax(200px, 1fr));
@@ -87,10 +93,13 @@ main {
   margin: 0 auto;
   width: fit-content;
   margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .item-all_drills li {
   text-align: center;
+  border: 2px white inset;
+  padding: 5px;
 }
 
 /*set the 4 buttons centered in a flexbox*/

@@ -3,9 +3,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   background-color: aliceblue;
-  background-image: url("../images/black_belt.png");
-  background-repeat: repeat-x repeat-y;
-  background-size: 64px ;
+  background-image: 
+    url("../images/blue_belt.png"),
+    url("../images/white_belt.png");
+  background-repeat: repeat,repeat;
+  background-size: 150px,150px;
+  background-position: 0 0, 75px 50px;
+
 }
 
 header {
@@ -81,7 +85,7 @@ h1 {
   margin-top: 2%;
 }
 
-
+/* set the button style and the cursor when checkbox is hover */
 button {
   background-color: #074D9C;
   color: aliceblue;

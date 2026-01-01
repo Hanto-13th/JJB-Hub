@@ -4,9 +4,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     color: black;
     height: 100%;
-    background-image: url("../images/black_belt.png");
-    background-repeat: repeat-x repeat-y;
-    background-size: 64px ;
+    background-image: 
+    url("../images/white_belt.png"),
+    url("../images/black_belt.png");
+    background-repeat: repeat,repeat;
+    background-size: 150px,150px;
+    background-position: 0 0, 75px 50px;
 }
 
 
@@ -73,7 +76,7 @@ h1 {
 .item-login{font-style: italic;
   border: 0.2rem inset aliceblue;
   background-color: #ffffff;
-  padding: 0.7rem;} /* add a border */
+  padding: 0.7rem;} 
   
 .item-button_login{margin-left: 30%; margin-top: 5%;}
 .item-button_rollback{margin-top: 2%;}

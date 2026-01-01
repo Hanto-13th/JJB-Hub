@@ -11,7 +11,9 @@ class Badge(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+#the class for handle relation between the badges and the user (its the table which see, who's user has which's badges )
+#>> progress is a dict with the progress of each keyword (example: TRIANGLE: 5) and compare to the original to see if the badge is done 
 class UserBadge(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     badge = models.ForeignKey(Badge, on_delete=models.CASCADE)

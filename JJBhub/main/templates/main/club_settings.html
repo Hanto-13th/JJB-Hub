@@ -15,9 +15,11 @@
         <div class="belt_dan"></div>
         <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
     </header>
+    <!--set in the sidebar all the club settings to handle the admins and secret key-->
     <div class="sidebar"></div>
     <div class="grid-container_settings_club">
         <div class="item-all_settings">
+            <!--display the secret key to add new praticeers-->
             <label for="secret_key">
                 <span style="margin-right: 4px; padding:2px;font-style: italic;font-weight: bold;border: #2E27F5 2px solid;background-color: #0B78F4;border-style: inset;">
                 Clé du club: 
@@ -25,6 +27,7 @@
             </label>
             <input type="text" id="secret_key" value="{{ club.secret_key }}" required readonly>
             <br>
+            <!--add a list of all members and checkboxes assiocated to add or delete admins-->
             <p><span style="padding:2px;font-style: italic;font-weight: bold;border: #2E27F5 2px solid;background-color: #0B78F4;border-style: inset;">Membres du club:</span></p>
             <form  action="{% url 'checkbox_admin' %}" method="post">
                 {% csrf_token %}
@@ -41,6 +44,7 @@
                             <br>
                         {% endif %}
                     {% endfor %}
+                <!--confirmation button with pop up message to confirm the new choice-->
                 <button type="submit" onclick="return confirm('Modifier les admins du club ?');">Changer les admins</button>
             </form>
         </div>

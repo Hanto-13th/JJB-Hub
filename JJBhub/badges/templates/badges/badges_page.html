@@ -9,10 +9,12 @@
 <link rel="stylesheet" href="{% static 'badges/css/badges_page.css' %}">
 </head>
 <body>
+    <header> 
+        <h1> <span style="font-size: 150%;font-weight: bolder;">Mes badges</span></h1> 
+        <div class="belt_dan"></div>
+        <div class="logo_header"><img src="{% static 'main/images/13th.png' %}" alt="Logo Website" class="logo"></div>
+    </header>
     <div class="grid-container_badges_page">
-            <div class="title-badges_page">
-                <header><h1>Mes badges</h1></header>
-            </div>
                 <div class="item-all_badges">
                     <!--display all the drill using format (name : description)-->
                     <ul>
@@ -22,13 +24,17 @@
                                 <!--if user has the badge display his icon-->
                                 <li>
                                     <img src="{% static badges.image_path %}" alt="{{ badges.name }}" width="60" height="60"><br>
-                                    <label for="badge_{{ badges.id }}">{{ badges.name }}: {{ badges.description }}<br><br>{{ badges.point }} points<br>Débloqué</label>
+                                    <label for="badge_{{ badges.id }}">
+                                        <span style="font-weight: bold;">{{ badges.name }}:</span><span> {{ badges.description }}</span><br><br><span style="font-style: italic;">{{ badges.point }} points</span><br><span style="font-style: italic;font-weight: 600;">Débloqué</span>
+                                    </label>
                                 </li>
                             {% else %}
                                 <!--else the badge icon is hidden-->
                                 <li>
                                     <img src="{% static 'badges\images\badge_locked.png' %}" alt="{{ badges.name }}" width="60" height="60"><br>
-                                    <label for="badge_{{ badges.id }}">{{ badges.name }}: {{ badges.description }}<br><br>{{ badges.point }} points<br>Bloqué</label>
+                                    <label for="badge_{{ badges.id }}">
+                                        <span style="font-weight: bold;">{{ badges.name }}:</span><span> {{ badges.description }}</span><br><br><span style="font-style: italic;">{{ badges.point }} points</span><br><span style="font-style: italic;font-weight: 600;">Bloqué</span>
+                                    </label>
                                 </li>
                             {% endif %}
                         {% endfor %}

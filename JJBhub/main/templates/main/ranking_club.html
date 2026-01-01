@@ -21,6 +21,7 @@
         <div class="golden_line-right"></div>
     </div>
     
+    <!--display the list of all members (label 'admin' for club admins) with the numbers of point for each member-->
     <div class="grid-container_ranking_club">
         <div class="item-all_users_ranking">
             {% for member in members_club %}
@@ -33,6 +34,7 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <!--if the request user is a admin of the club add a button for him to access at the club settings-->
         {% if request.user.is_admin is True %}
             <div class="item-admin_settings">
                 <section>

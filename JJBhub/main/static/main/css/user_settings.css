@@ -1,9 +1,74 @@
-body{ 
-    background-color: #56a0d3;
-    font-family:'Arial';
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  height: 100%;
+  width: 100%;
+  background-color: #D3D3FF;
+  background-image: 
+    url("../images/purple_belt.png"),
+    url("../images/white_belt.png");
+  background-repeat: repeat,repeat;
+  background-size: 150px,150px;
+  background-position: 0 0, 75px 50px;
+
 }
 
 
+
+header {
+  position: relative;
+  background-color: #9400D3;
+  width: 100%;
+  margin:0;
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: none;
+  border-right: outset #8B008B;
+  border-bottom: outset #9966CC;
+  border-left: none;
+  border-radius: 2px;
+  box-shadow: 1px 0 5px 10px rgba(0,0,0,0.3);
+}
+
+.belt_dan {
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 250px;
+  height: 100%;
+  background-color: black;
+  border-bottom: outset black;
+  z-index: 1;
+}
+.logo_header {
+  position: absolute;
+  height: 100%; 
+  display: flex;
+  right: 0;
+  top: 0;
+  align-items: center; 
+  z-index: 1;
+}
+
+.logo {
+  height: 100%; 
+  width: auto;  
+  z-index: 1;
+}
+
+h1 {
+  text-align: left;
+  color: aliceblue;
+}
+.sidebar{
+  position: fixed;
+  width: 35%;
+  height: 100%;
+  z-index: -1;
+  background-color:#a97ad8;
+  border: 2px #A47DAB outset;
+}
 .grid-container_settings {
   display: grid; /* set the grid */
   grid-template-columns: repeat(4, 1fr); /* Four equal columns */
@@ -13,23 +78,26 @@ body{
 
 }
 
-.title_settings {
-    grid-column: 1/3; /* Spans two columns */
-    grid-row: 1; 
-    font-size: 150%;
-    color: #f0f8ff;
-
-}
 
 .item-all_settings {grid-column: 1/3; grid-row: 2;padding: 1rem;} /* Listing of all settings*/
-.item-rollback_button {grid-column: 1;grid-row: 3;} /* Rollback button */
+.item-rollback_button {grid-column: 1;grid-row: 3;justify-items: center;margin-left: 35%;} /* Rollback button */
 
 /* remove the bullet points of the list */
 li {
   list-style-type: none;
 }
 
+/*set buttons style*/
 button {
-  background-color: #828282;
+  background-color: #074D9C;
   color: aliceblue;
+  border: outset #033c7d;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8em;
+}
+
+button:hover {
+  background-color: #217de7;
 }

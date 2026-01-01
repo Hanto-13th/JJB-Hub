@@ -5,9 +5,12 @@ body {
   height: 100%;
   width: 100%;
   background-color: aliceblue;
-  background-image: url("../images/black_belt.png");
-  background-repeat: repeat-x repeat-y;
-  background-size: 64px ;
+  background-image: 
+    url("../images/black_belt.png"),
+    url("../images/white_belt.png");
+  background-repeat: repeat,repeat;
+  background-size: 150px,150px;
+  background-position: 0 0, 75px 50px;
 }
 
 header {
@@ -74,7 +77,7 @@ main{
 .item-add_drill{margin-bottom: 5%;}
 
 .item-button_submit{margin-left: 40%;margin-bottom: 5%;}
-.item-button_rollback{margin-left: 42%;}
+.item-button_rollback{margin-left: 42.5%;}
 
 /* remove the bullet points of the list */
 li {
